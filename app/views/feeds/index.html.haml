@@ -1,5 +1,7 @@
 - if @feeds.blank?
-  sorry no feeds
+  %h1 You Dont have any feeds! Add one!
+  = content_tag :div, id: "add-some-feeds" do
+    = render "feeds/form", feed: current_user.feeds.build
 - else
   %ul#feed-list
-  = render @feeds
+    = render @feeds
