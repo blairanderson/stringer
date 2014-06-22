@@ -5,9 +5,9 @@ module UsersSpecHelper
     end
     visit new_user_session_path
     within("#new_user") do
-      fill_in 'Email', :with => user.email
+      fill_in 'Email', with: user.email
       within('.user_password') do
-        fill_in 'Password', :with => 'password'
+        fill_in 'Password', with: 'password'
       end
       click_on 'Sign in'
     end

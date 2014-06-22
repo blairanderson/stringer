@@ -9,29 +9,75 @@ describe "FeedsController" do
   let(:feed_count) { 3 }
   let(:feeds) { create_list(:feed, feed_count) }
 
-  describe "GET /feeds" do
-    it "renders a list of feeds" do
+  describe "viewing the feed list" do
+    it "shows the correct number of feeds" do
       User.any_instance.should_receive(:feeds).and_return(feeds)
 
-      visit '/feeds'
+      visit feeds_path
 
       expect(page).to have_css("ul#feed-list")
       expect(page).to have_css("li.feed", count: feed_count)
     end
 
     it "displays message to add feeds if there are none" do
-      visit '/feeds'
+      visit feeds_path
       expect(page).to have_css "#add-some-feeds"
     end
   end
 
-  describe "GET /feeds/new" do
-    it "displays a form and submit button" do
+  describe "new feed view" do
+    it "works" do
       visit new_feed_path
-
       expect(page).to have_css "form#new_feed"
     end
   end
+
+  describe "creating a feed" do
+    describe "when a feed url is valid" do
+      let(:feed_url) { "http://example.com/" }
+      let(:feed_name) { "New Feed" }
+
+      it "adds the feed and queues it to be fetched" do
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(valid_feed)
+        FetchFeeds.should_receive(:enqueue).with([valid_feed])
+
+        visit new_feed_path
+        fill_in "Name", with: feed_name
+        fill_in "Url", with: feed_url
+        click_on "Submit Feed"
+
+        expect(page).to have_content "Feed Created"
+      end
+    end
+
+    context "when the feed url is invalid" do
+      let(:feed_url) { "http://not-a-valid-feed.com/" }
+
+      xit "adds the feed and queues it to be fetched" do
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(false)
+
+        post "/feeds", feed_url: feed_url
+
+        page = last_response.body
+        page.should have_tag(".error")
+      end
+    end
+
+    context "when the feed url is one we already subscribe to" do
+      let(:feed_url) { "http://example.com/" }
+      let(:invalid_feed) { double(valid?: false) }
+
+      xit "adds the feed and queues it to be fetched" do
+        AddNewFeed.should_receive(:add).with(feed_url).and_return(invalid_feed)
+
+        post "/feeds", feed_url: feed_url
+
+        page = last_response.body
+        page.should have_tag(".error")
+      end
+    end
+  end
+
 
 
   describe "GET /feeds/:feed_id/edit" do
@@ -63,51 +109,6 @@ describe "FeedsController" do
       FeedRepository.should_receive(:delete).with("123")
 
       delete "/feeds/123"
-    end
-  end
-
-
-  describe "POST /feeds" do
-    context "when the feed url is valid" do
-      let(:feed_url) { "http://example.com/" }
-      let(:valid_feed) { double(valid?: true) }
-
-      xit "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(valid_feed)
-        FetchFeeds.should_receive(:enqueue).with([valid_feed])
-
-        post "/feeds", feed_url: feed_url
-
-        last_response.status.should be 302
-        URI::parse(last_response.location).path.should eq "/"
-      end
-    end
-
-    context "when the feed url is invalid" do
-      let(:feed_url) { "http://not-a-valid-feed.com/" }
-
-      xit "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(false)
-
-        post "/feeds", feed_url: feed_url
-
-        page = last_response.body
-        page.should have_tag(".error")
-      end
-    end
-
-    context "when the feed url is one we already subscribe to" do
-      let(:feed_url) { "http://example.com/" }
-      let(:invalid_feed) { double(valid?: false) }
-
-      xit "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(invalid_feed)
-
-        post "/feeds", feed_url: feed_url
-
-        page = last_response.body
-        page.should have_tag(".error")
-      end
     end
   end
 
