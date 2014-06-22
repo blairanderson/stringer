@@ -1,17 +1,22 @@
 require "spec_helper"
 
 describe "FeedsController" do
-  let(:feeds) { [FeedFactory.build, FeedFactory.build] }
+
+  before :each do
+    @user = create(:user, email: "email@example.com", password: "password")
+    login_user @user
+  end
+  let(:feed_count) { 3 }
+  let(:feeds) { create_list(:feed, feed_count) }
 
   describe "GET /feeds" do
     it "renders a list of feeds" do
-      FeedRepository.should_receive(:list).and_return(feeds)
+      User.any_instance.should_receive(:feeds).and_return(feeds)
 
-      get "/feeds"
+      visit '/feeds'
 
-      page = last_response.body
-      page.should have_tag("ul#feed-list")
-      page.should have_tag("li.feed", count: 2)
+      expect(page).to have_css("ul#feed-list")
+      expect(page).to have_css("li.feed", count: feed_count)
     end
 
     it "displays message to add feeds if there are none" do
