@@ -1,16 +1,39 @@
 require "spec_helper"
 
+
+def login_user(user = nil)
+  unless user
+    user = FactoryGirl.create(:user, email: "example@example.com", password: 'password')
+  end
+  visit new_user_session_path
+  within("#new_user") do
+    fill_in 'Email', :with => user.email
+    within('.user_password') do
+      fill_in 'Password', :with => 'password'
+    end
+    click_on 'Sign in'
+  end
+end
+
 describe "WelcomeController" do
   context "when a user is not logged in" do
 
-    describe "GET /#index" do
-      it "displays a form to enter your password" do
+    describe "GET #index" do
+      it "acts like a new user form" do
         visit root_path
         expect(current_path).to eq new_user_registration_path
-        expect(page).to have_tag("form#new_user")
-        expect(page).to have_field("input#password")
-        expect(page).to have_field("input#password-confirmation")
-        expect(page).to have_tag("input#submit")
+
+
+        within("#new_user") do
+          fill_in 'Email', :with => 'user@example.com'
+          within('.user_password') do
+            fill_in 'Password', :with => 'password'
+          end
+          fill_in 'Password confirmation', :with => 'password'
+          click_on 'Sign up'
+        end
+        expect(page).to have_content t('devise.registrations.signed_up')
+
       end
     end
 
@@ -42,17 +65,15 @@ describe "WelcomeController" do
 
   context "when a user has been setup" do
     before do
-      login_user(create_user)
+      login_user
     end
 
     it "should redirect any requests to first run stuff" do
       visit root_path
-      expect(response.status).to eq 302
-      expect(current_path).to eq "/news"
+      expect(current_path).to eq news_index_path
 
-      get "/setup/password"
-      expect(response.status).to eq 302
-      expect(current_path).to eq "/news"
+      visit new_user_registration_path
+      expect(current_path).to eq news_index_path
     end
   end
 end
