@@ -1,7 +1,4 @@
 require "spec_helper"
-require 'will_paginate/array'
-
-app_require "controllers/stories_controller"
 
 describe "StoriesController" do
   let(:story_one) { StoryFactory.build }
@@ -13,7 +10,7 @@ describe "StoriesController" do
       StoryRepository.stub(:unread).and_return(stories)
       UserRepository.stub(fetch: double)
     end
-    
+
     it "display list of unread stories" do
       get "/news"
 

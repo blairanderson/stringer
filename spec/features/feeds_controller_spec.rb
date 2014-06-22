@@ -1,7 +1,5 @@
 require "spec_helper"
 
-app_require "controllers/feeds_controller"
-
 describe "FeedsController" do
   let(:feeds) { [FeedFactory.build, FeedFactory.build] }
 
