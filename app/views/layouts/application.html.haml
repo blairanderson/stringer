@@ -13,12 +13,19 @@
         .col-xs-12
           %ol.breadcrumb
             %li Woofer
-            %li
-              %a{href: "/"} Dashboard
-            %li
-              %a{href: "/feeds"} Feeds
-            %li
-              %a{href: "/feeds/new"} New Feed
+            - if current_user
+              %li
+                %a{href: "/"} Dashboard
+              %li
+                %a{href: "/feeds"} Feeds
+              %li
+                %a{href: "/feeds/new"} New Feed
+            - else
+              - if controller_name != 'sessions'
+                %li= link_to "Sign in", new_session_path(resource_name)
+              - if devise_mapping.registerable? && controller_name != 'registrations'
+                %li= link_to "Sign up", new_registration_path(resource_name)
+
             = render 'flashes'
       .row
         .col-xs-3
