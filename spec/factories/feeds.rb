@@ -4,6 +4,7 @@ FactoryGirl.define do
   sequence :url do |n|
     "somecrazylongfeedurl#{n}"
   end
+
   factory :feed do
     name "MyString"
     url

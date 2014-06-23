@@ -1,21 +1,13 @@
-require 'thread/pool'
-
-class FetchFeeds
-  def initialize(feeds, pool = Thread.pool(10))
+class Feeds::FetchFeeds
+  def initialize(feeds)
     @feeds = feeds
-    @pool = pool
   end
 
   def fetch_all
     @feeds.each do |feed|
-      @pool.process do
-        FetchFeed.new(feed).fetch
-
-        ActiveRecord::Base.connection.close
-      end
+      FetchFeed.new(feed).fetch
+      ActiveRecord::Base.connection.close
     end
-
-    @pool.shutdown
   end
 
   def self.enqueue(feeds)

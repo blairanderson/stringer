@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "FeedsController" do
+describe FeedsController do
 
   before :each do
     @user = create(:user, email: "email@example.com", password: "password")
@@ -33,34 +33,19 @@ describe "FeedsController" do
   end
 
   describe "creating a feed" do
-    describe "when a feed url is valid" do
-      let(:feed_url) { "http://example.com/" }
-      let(:feed_name) { "New Feed" }
+    let(:feed_url) { "http://feeds.feedburner.com/ThingsiwantToRemember" }
+    let(:invalid_feed_url) { "http://not-a-valid-feed.com/" }
+    it "adds the feed and queues it to be fetched" do
+      visit new_feed_path
+      fill_in "Url", with: feed_url
+      click_on "Create Feed"
 
-      it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(valid_feed)
-        FetchFeeds.should_receive(:enqueue).with([valid_feed])
+      expect(page).to have_content "Feed Created"
+      visit new_feed_path
+      fill_in "Url", with: invalid_feed_url
+      click_on "Create Feed"
 
-        visit new_feed_path
-        fill_in "Name", with: feed_name
-        fill_in "Url", with: feed_url
-        click_on "Submit Feed"
-
-        expect(page).to have_content "Feed Created"
-      end
-    end
-
-    context "when the feed url is invalid" do
-      let(:feed_url) { "http://not-a-valid-feed.com/" }
-
-      xit "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(false)
-
-        post "/feeds", feed_url: feed_url
-
-        page = last_response.body
-        page.should have_tag(".error")
-      end
+      expect(page).to have_content("Could not be found.")
     end
 
     context "when the feed url is one we already subscribe to" do
@@ -77,7 +62,12 @@ describe "FeedsController" do
       end
     end
   end
+  
+  describe "viewing a feed" do
+    it "should not have errors" do
 
+    end
+  end
 
 
   describe "GET /feeds/:feed_id/edit" do

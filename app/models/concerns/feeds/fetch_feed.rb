@@ -1,6 +1,6 @@
 require "feedjira"
 
-class FetchFeed
+class Feeds::FetchFeed
 
   USER_AGENT = "Stringer (https://github.com/swanson/stringer)"
 

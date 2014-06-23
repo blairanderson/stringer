@@ -1,4 +1,4 @@
 = content_tag_for :li, feed do
-  = feed.name
-  = feed.url
+  = link_to feed.name, feed
+  = link_to "External: #{feed.url}", feed.url
   = feed.last_fetched
