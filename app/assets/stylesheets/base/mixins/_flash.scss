@@ -1,15 +1,17 @@
 @mixin flash($color) {
   background: $color;
-  color: darken($color, 60);
+  color: white;
   font-weight: bold;
-  margin-bottom: $base-line-height / 2;
-  padding: $base-line-height / 2;
 
   a {
-    color: darken($color, 70);
+    color: white;
 
     &:hover {
-      color: darken($color, 90);
+      background: lighten($color, 5%);
     }
   }
+}
+
+#flash_alert {
+  @include flash(red);
 }

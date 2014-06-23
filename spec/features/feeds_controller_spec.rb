@@ -15,8 +15,10 @@ describe FeedsController do
 
       visit feeds_path
 
-      expect(page).to have_css("ul#feed-list")
-      expect(page).to have_css("li.feed", count: feed_count)
+      expect(page).to have_css(".list-group")
+      within("#feed-list") do
+        expect(page).to have_css(".list-group-item", count: feed_count)
+      end
     end
 
     it "displays message to add feeds if there are none" do

@@ -3,5 +3,5 @@
   = content_tag :div, id: "add-some-feeds" do
     = render "feeds/form", feed: current_user.feeds.build
 - else
-  %ul#feed-list
+  %ul.list-group#feed-list
     = render @feeds

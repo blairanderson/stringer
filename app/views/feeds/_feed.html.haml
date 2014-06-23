@@ -1,4 +1,6 @@
-= content_tag_for :li, feed do
-  = link_to feed.name, feed
-  = link_to "External: #{feed.url}", feed.url
-  = feed.last_fetched
+= link_to feed, class: "list-group-item" do
+  = content_tag :div do
+    -  if feed.last_fetched
+      = "#{time_ago_in_words(feed.last_fetched)} ago /"
+  = content_tag :div, "#{feed.name} / #{feed.url}"
+
