@@ -8,6 +8,8 @@ gem 'coffee-rails'
 gem 'delayed_job_active_record'
 gem 'devise'
 gem 'email_validator'
+gem 'feedbag', '~> 0.9.2'
+gem 'feedjira', '~> 1.3.0'
 gem 'flutie'
 gem 'haml-rails'
 gem 'high_voltage'
@@ -22,6 +24,7 @@ gem 'simple_form'
 gem 'title'
 gem 'uglifier'
 gem 'unicorn'
+
 
 group :development do
   gem 'foreman'
