@@ -1,13 +1,12 @@
 require "feedjira"
 
-class Feeds::FetchFeed
+class FetchFeed
 
-  USER_AGENT = "Stringer (https://github.com/swanson/stringer)"
+  USER_AGENT = "Stingerails (https://github.com/blairanderson)"
 
-  def initialize(feed, feed_parser = Feedjira::Feed, logger = nil)
+  def initialize(feed)
     @feed = feed
-    @parser = feed_parser
-    @logger = logger
+    @parser = Feedjira::Feed
   end
 
   def fetch
