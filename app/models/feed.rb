@@ -3,7 +3,6 @@ require "feedjira"
 
 class Feed < ActiveRecord::Base
   include ActiveModel::Validations
-  # validates_with MyValidator
 
   has_many :user_feeds
   has_many :users, through: :user_feeds
