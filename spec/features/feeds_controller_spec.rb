@@ -54,8 +54,8 @@ describe FeedsController do
       let(:feed_url) { "http://example.com/" }
       let(:invalid_feed) { double(valid?: false) }
 
-      xit "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(invalid_feed)
+      it "adds the feed and queues it to be fetched" do
+        Feed.should_receive(:add).with(feed_url).and_return(invalid_feed)
 
         post "/feeds", feed_url: feed_url
 
@@ -66,9 +66,7 @@ describe FeedsController do
   end
   
   describe "viewing a feed" do
-    it "should not have errors" do
-
-    end
+    it "is able to be fetched"
   end
 
 

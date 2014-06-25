@@ -4,9 +4,9 @@ class FetchFeed
 
   USER_AGENT = "Stingerails (https://github.com/blairanderson)"
 
-  def initialize(feed)
+  def initialize(feed, parser = Feedjira::Feed)
     @feed = feed
-    @parser = Feedjira::Feed
+    @parser = parser
   end
 
   def fetch
@@ -17,15 +17,15 @@ class FetchFeed
         @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
       else
         new_entries_from(raw_feed).each do |entry|
-          StoryRepository.add(entry, @feed)
+          Story.add(entry, @feed)
         end
 
-        FeedRepository.update_last_fetched(@feed, raw_feed.last_modified)
+        Feed.update_last_fetched(@feed, raw_feed.last_modified)
       end
 
-      FeedRepository.set_status(:green, @feed)
+      Feed.set_status(:green, @feed)
     rescue Exception => ex
-      FeedRepository.set_status(:red, @feed)
+      Feed.set_status(:red, @feed)
 
       @logger.error "Something went wrong when parsing #{@feed.url}: #{ex}" if @logger
     end

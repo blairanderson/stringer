@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622155123) do
+ActiveRecord::Schema.define(version: 20140625124207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,20 @@ ActiveRecord::Schema.define(version: 20140622155123) do
   end
 
   add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
+
+  create_table "stories", force: true do |t|
+    t.text     "title"
+    t.text     "permalink"
+    t.text     "body"
+    t.integer  "feed_id",                    null: false
+    t.datetime "published"
+    t.boolean  "is_read",    default: false, null: false
+    t.boolean  "is_starred", default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stories", ["feed_id"], name: "index_stories_on_feed_id", using: :btree
 
   create_table "user_feeds", force: true do |t|
     t.integer  "user_id",    null: false
