@@ -10,5 +10,7 @@ en:
       date: '%b %-d, %Y'
       short: '%B %d'
   models:
+    not_found: "Could not be found."
     feed:
-      created: "Success!"
+      created: "Feed Created!"
+      exists: "Feed Already Exists."

@@ -6,7 +6,11 @@ Getting Started
 
 This repository comes equipped with a self-setup script:
 
+    bundle install
+
     % ./bin/setup
+
+    rake db:migrate
 
 After setting up, you can run the application using [foreman]:
 

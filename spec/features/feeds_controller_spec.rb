@@ -36,31 +36,37 @@ describe FeedsController do
 
   describe "creating a feed" do
     let(:feed_url) { "http://feeds.feedburner.com/ThingsiwantToRemember" }
-    let(:invalid_feed_url) { "http://not-a-valid-feed.com/" }
-    it "adds the feed and queues it to be fetched" do
+    it "works with a valid feed" do
       visit new_feed_path
       fill_in "Url", with: feed_url
       click_on "Create Feed"
+      expect(page).to have_content t('models.feed.created')
+    end
 
-      expect(page).to have_content "Feed Created"
+    let(:invalid_feed_url) { "http://not-a-valid-feed.com/" }
+    it "returns error with invalid feed" do
       visit new_feed_path
       fill_in "Url", with: invalid_feed_url
       click_on "Create Feed"
 
-      expect(page).to have_content("Could not be found.")
+      expect(page).to have_content t('models.not_found')
     end
 
-    context "when the feed url is one we already subscribe to" do
-      let(:feed_url) { "http://example.com/" }
-      let(:invalid_feed) { double(valid?: false) }
+    describe "when the user already subscribes" do
+      let(:feed_url) { "http://quickleft.com/blog/feed" }
 
-      it "adds the feed and queues it to be fetched" do
-        Feed.should_receive(:add).with(feed_url).and_return(invalid_feed)
+      it "returns an error" do
+        visit new_feed_path
+        fill_in "Url", with: feed_url
+        click_on "Create Feed"
 
-        post "/feeds", feed_url: feed_url
+        expect(page).to have_content t('models.feed.created')
 
-        page = last_response.body
-        page.should have_tag(".error")
+        visit new_feed_path
+        fill_in "Url", with: feed_url
+        click_on "Create Feed"
+
+        expect(page).to have_content t('models.feed.exists')
       end
     end
   end

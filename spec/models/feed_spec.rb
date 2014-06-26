@@ -1,13 +1,18 @@
 require 'spec_helper'
 
 describe Feed do
-  it { should validate_presence_of :url }
+  describe "Validations" do
+    before { create(:feed) }
+    it { should validate_uniqueness_of :url}
+    it { should validate_presence_of :url }
+  end
 
-  it { should have_many :user_feeds }
-  it { should have_many(:users).through(:user_feeds) }
+  describe "associations" do
+    it { should have_many :user_feeds }
+    it { should have_many(:users).through(:user_feeds) }
+  end
 
-
-  context "feed cannot be discovered" do
+  describe "feed cannot be discovered" do
     let(:discoverer) { double(discover: false) }
     it "returns false if cant discover any feeds" do
       result = Feed.add({url: "http://not-a-feed.com"})
@@ -16,7 +21,7 @@ describe Feed do
     end
   end
 
-  context "feed can be discovered" do
+  describe "feed can be discovered" do
     let(:url) { "http://quickleft.com/blog.rss" }
     it "parses and creates the feed if discovered" do
       result = Feed.add({url: url})

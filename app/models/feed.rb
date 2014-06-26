@@ -2,26 +2,23 @@ require "feedbag"
 require "feedjira"
 
 class Feed < ActiveRecord::Base
-  include ActiveModel::Validations
-
   has_many :user_feeds
   has_many :users, through: :user_feeds
 
   validates_presence_of :url
+  validates_uniqueness_of :url
 
-  ONE_DAY = 24 * 60 * 60
   def self.add(options = {})
     result = self.discover(options[:url])
     return false unless result
 
-    return create({
-        name: result.title,
-        url: result.feed_url,
-        last_fetched: Time.now - ONE_DAY
-        })
+    self.find_or_create_by({
+                               name: result.title,
+                               url: result.feed_url
+                           })
   end
 
-private
+  private
   def self.discover(url)
     @finder = Feedbag
     @parser = Feedjira::Feed

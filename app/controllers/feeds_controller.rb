@@ -1,7 +1,7 @@
 class FeedsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_feed, only: [:show]
-  
+
   def index
     @feeds = current_user.feeds
   end
@@ -11,20 +11,16 @@ class FeedsController < ApplicationController
   end
 
   def create
-    feed = Feed.where(feed_params).first
-    if (feed && feed.valid?)
-      flash[:notice] = t("models.feed.created")
-      @feed = feed
-    else
-      @feed = Feed.add(feed_params)
-    end
+    feed = Feed.add(feed_params)
 
-    if @feed
-      current_user.feeds << @feed
-      redirect_to @feed, notice: "Feed Created!"
+    if feed && current_user.feeds.include?(feed)
+      redirect_to feed, notice: t('models.feed.exists')
+    elsif feed
+      current_user.feeds << feed
+      redirect_to feed, notice: t('models.feed.created')
     else
-      @feed = current_user.feeds.build(feed_params)
-      flash[:notice] =  "Could not be found."
+      @feed = Feed.new
+      flash[:error] = t('models.not_found')
       render :new
     end
   end
