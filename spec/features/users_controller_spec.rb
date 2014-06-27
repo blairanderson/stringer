@@ -55,10 +55,10 @@ describe "WelcomeController" do
 
     it "should redirect any requests to first run stuff" do
       visit root_path
-      expect(current_path).to eq news_index_path
+      expect(current_path).to eq stories_path
 
       visit new_user_registration_path
-      expect(current_path).to eq news_index_path
+      expect(current_path).to eq stories_path
     end
   end
 end

@@ -1,7 +1,16 @@
 require 'spec_helper'
 
 describe Story do
-  it {should belong_to(:feed).dependent(:destroy)}
+  describe "associations" do
+    it {should belong_to(:feed).dependent(:destroy)}
+    it {should have_many(:user_stories)}
+    it {should have_many(:users).through(:user_stories)}
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:feed_id) }
+  end
+
 
   describe ".add" do
     before(:each) do
@@ -18,6 +27,5 @@ describe Story do
       expect(story).to be_kind_of Story
       expect(story.feed).to eq @feed
     end
-    
   end
 end

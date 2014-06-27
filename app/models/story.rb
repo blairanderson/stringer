@@ -1,6 +1,11 @@
 class Story < ActiveRecord::Base
   belongs_to :feed, dependent: :destroy
 
+  has_many :user_stories
+  has_many :users, through: :user_stories
+
+  validates_presence_of :feed_id
+
   UNTITLED = "[untitled]"
 
   def headline

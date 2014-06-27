@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :story do
-    title "MyText"
-    permalink "MyText"
+    title { [Faker::Company.name, Faker::Company.catch_phrase].join(', ') }
+    permalink {[Faker::Company.name, Faker::Company.catch_phrase].join(', ').parameterize }
     body "MyText"
-    feed_id 1
+    feed
     published "2014-06-25 06:42:07"
   end
 end
