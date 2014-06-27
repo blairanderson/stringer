@@ -70,7 +70,7 @@ describe FeedsController do
       end
     end
   end
-  
+
   describe "viewing a feed" do
     it "is able to be fetched"
   end
@@ -132,7 +132,7 @@ describe FeedsController do
   end
 
   describe "GET /feeds/export" do
-    let(:some_xml) { "<xml>some dummy opml</xml>"}
+    let(:some_xml) { "<xml>some dummy opml</xml>" }
     before { Feed.stub(:all) }
 
     xit "returns an OPML file" do

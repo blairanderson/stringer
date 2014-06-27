@@ -4,6 +4,7 @@ class FeedsController < ApplicationController
 
   def index
     @feeds = current_user.feeds
+    FetchFeeds.new(@feeds).fetch_all
   end
 
   def new
@@ -11,18 +12,25 @@ class FeedsController < ApplicationController
   end
 
   def create
-    feed = Feed.add(feed_params)
+    @feed = Feed.add(feed_params)
 
-    if feed && current_user.feeds.include?(feed)
-      redirect_to feed, notice: t('models.feed.exists')
-    elsif feed
-      current_user.feeds << feed
-      redirect_to feed, notice: t('models.feed.created')
+    if @feed && current_user.feeds.include?(@feed)
+      flash[:notice] = t('models.feed.exists')
+      redirect_to_feed
+    elsif @feed
+      current_user.feeds << @feed
+      flash[:notice] = t('models.feed.created')
+      redirect_to_feed
     else
       @feed = Feed.new
       flash[:error] = t('models.not_found')
       render :new
     end
+  end
+
+  def redirect_to_feed
+    FetchFeeds.new([@feed]).delay.fetch_all
+    redirect_to @feed
   end
 
   def show

@@ -24,6 +24,7 @@ gem 'rails', '4.1.1'
 gem 'recipient_interceptor'
 gem 'sass-rails', '~> 4.0.3'
 gem 'simple_form'
+gem 'simple_enum'
 gem 'title'
 gem 'uglifier'
 gem 'unicorn'
@@ -32,8 +33,6 @@ group :development do
   gem 'foreman'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'better_errors'
-  gem 'binding_of_caller'
 end
 
 group :development, :test do
