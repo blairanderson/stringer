@@ -72,8 +72,4 @@ class Story < ActiveRecord::Base
 
     doc.to_html
   end
-
-
-
-
 end

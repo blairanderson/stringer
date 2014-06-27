@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20140627053154) do
 
   create_table "feeds", force: true do |t|
     t.string   "name"
-    t.text     "url",          null: false
+    t.text     "url",                      null: false
     t.datetime "last_fetched"
-    t.integer  "status"
+    t.integer  "status_cd",    default: 0, null: false
     t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140627053154) do
     t.text     "permalink"
     t.text     "body"
     t.integer  "feed_id",                    null: false
+    t.integer  "entry_id"
     t.datetime "published"
     t.boolean  "is_read",    default: false, null: false
     t.boolean  "is_starred", default: false, null: false

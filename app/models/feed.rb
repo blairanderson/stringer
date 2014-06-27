@@ -4,18 +4,29 @@ require "feedjira"
 class Feed < ActiveRecord::Base
   has_many :user_feeds
   has_many :users, through: :user_feeds
+  has_many :stories
 
   validates_presence_of :url
   validates_uniqueness_of :url
+
+  as_enum :status, [:green, :yellow, :red]
+
+  ONE_DAY = 24 * 60 * 60
 
   def self.add(options = {})
     result = self.discover(options[:url])
     return false unless result
 
-    self.find_or_create_by({
-                               name: result.title,
-                               url: result.feed_url
-                           })
+    self.find_or_create_by({name: result.title,url: result.feed_url}) do |f|
+      f.last_fetched = Time.now - ONE_DAY
+    end
+  end
+
+  def update_last_fetched(timestamp)
+    if valid_timestamp?(timestamp, self.last_fetched)
+      self.last_fetched = timestamp
+      self.save
+    end
   end
 
   private
@@ -38,5 +49,10 @@ class Feed < ActiveRecord::Base
     feed
   rescue Exception
     yield if block_given?
+  end
+
+
+  def valid_timestamp?(new_timestamp, current_timestamp)
+    new_timestamp && new_timestamp.year >= 1970 && (current_timestamp.nil? || new_timestamp > current_timestamp)
   end
 end

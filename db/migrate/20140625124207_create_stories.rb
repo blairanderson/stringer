@@ -5,6 +5,7 @@ class CreateStories < ActiveRecord::Migration
       t.text :permalink
       t.text :body
       t.integer :feed_id, null: false
+      t.integer :entry_id
       t.datetime :published
       t.boolean :is_read, null: false, default: false
       t.boolean :is_starred, null:false, default: false

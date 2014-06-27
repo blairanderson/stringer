@@ -4,7 +4,7 @@ class CreateFeeds < ActiveRecord::Migration
       t.string :name
       t.text :url, null: false
       t.datetime :last_fetched
-      t.integer :status
+      t.integer :status_cd, null: false, default: 0
       t.integer :group_id
 
       t.timestamps
