@@ -16,7 +16,8 @@ class FetchFeed
       if raw_feed == 304
         @logger.info "#{@feed.url} has not been modified since last fetch" if @logger
       else
-        new_entries_from(raw_feed).each do |entry|
+        entries = new_entries_from(raw_feed)
+        entries.each do |entry|
           Story.add(entry, feed)
         end
 

@@ -13,8 +13,7 @@ class FindNewStories
     @raw_feed.entries.each do |story|
       break if @latest_entry_id && story.id == @latest_entry_id
 
-      stories << story unless story.published &&
-                              story.published < @last_fetched
+      stories << story unless story.published && story.published < @last_fetched
     end
 
     stories

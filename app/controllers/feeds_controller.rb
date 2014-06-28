@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
 
   def index
     @feeds = current_user.feeds
-    FetchFeeds.new(@feeds).fetch_all
+    FetchFeeds.new(@feeds).delay.fetch_all
   end
 
   def new

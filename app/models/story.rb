@@ -1,10 +1,11 @@
 class Story < ActiveRecord::Base
-  belongs_to :feed, dependent: :destroy
+  belongs_to :feed
 
   has_many :user_stories
   has_many :users, through: :user_stories
 
   validates_presence_of :feed_id
+  validates_uniqueness_of :entry_id, scope: :feed_id
 
   UNTITLED = "[untitled]"
 
@@ -34,7 +35,10 @@ class Story < ActiveRecord::Base
        title: entry.title,
        permalink: entry.url,
        body: extract_content(entry),
-       published: entry.published || Time.now
+       is_read: false,
+       is_starred: false,
+       published: entry.published || Time.now,
+       entry_id: entry.id
     })
   end
 

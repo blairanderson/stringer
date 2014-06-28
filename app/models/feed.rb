@@ -11,14 +11,15 @@ class Feed < ActiveRecord::Base
 
   as_enum :status, [:green, :yellow, :red]
 
-  ONE_DAY = 24 * 60 * 60
-
   def self.add(options = {})
     result = self.discover(options[:url])
     return false unless result
 
-    self.find_or_create_by({name: result.title,url: result.feed_url}) do |f|
-      f.last_fetched = Time.now - ONE_DAY
+    last_fetched = Time.now - 1.month
+
+    find_or_create_by(url: result.feed_url) do |f|
+      f.name = result.title
+      f.last_fetched = last_fetched
     end
   end
 

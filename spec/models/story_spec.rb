@@ -9,6 +9,7 @@ describe Story do
 
   describe "validations" do
     it { should validate_presence_of(:feed_id) }
+    it { should validate_uniqueness_of(:entry_id).scoped_to(:feed_id)}
   end
 
 
