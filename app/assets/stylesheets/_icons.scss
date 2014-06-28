@@ -1,3 +1,19 @@
 .icon-plus:after {
+  @include icon;
   @include icon-plus;
+}
+
+.icon-circle {
+  &.green {
+    @include icon-circle-arrow-up($font-size: 20px);
+    color: #2ECC71;
+  }
+  &.yellow {
+    @include icon-circle-arrow-right($font-size: 20px);
+    color: #F1C40F;
+  }
+  &.red {
+    @include icon-circle-arrow-down($font-size: 20px);
+    color: #E74C3C;
+  }
 }

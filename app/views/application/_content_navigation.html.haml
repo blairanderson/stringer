@@ -1,11 +1,9 @@
-.row
-  .col-xs-12.col-lg-9
-    %ul.nav.nav-tabs.nav-justified.content-navigation{role: "content_navigation"}
-      %li{class: (current_page?(stories_path) ? "active" : "" )}
-        = link_to "Stories", stories_path
-      %li
-        %a{href: "#"} Schedule
-      %li{class: (current_page?(feeds_path) ? "active" : "" )}
-        = link_to "Feeds", feeds_path
-      %li
-        %a{href: "#"} Settings
+%ul.nav.nav-tabs.nav-justified.content-navigation{role: "content_navigation"}
+  %li{class: (current_page?(stories_path) ? "active" : "" )}
+    = link_to "Stories", stories_path
+  %li
+    %a{href: "#"} Schedule
+  %li{class: (current_page?(feeds_path) ? "active" : "" )}
+    = link_to "Feeds", feeds_path
+  %li
+    %a{href: "#"} Settings

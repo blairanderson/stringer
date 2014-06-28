@@ -1,9 +1,20 @@
-.feed-item{id: "feed-#{feed.id}"}
-  .panel
-    %p.lead= link_to feed.name, feed
-    .panel-body
-      .panel.panel-default
-        .panel-heading
-          = "#{feed.name} / #{feed.url}"
-        .panel-body
-          = "#{time_ago_in_words(feed.last_fetched)} ago"
+%li.feed{"data-id" => feed.id, id: "feed-#{feed.id}"}
+  .row.feed-line
+    .col-xs-7.feed-title-container
+      %p.feed-title
+        %i.icon-circle.status{class: feed.status}
+        = link_to feed.name, feed
+    .col-xs-3.feed-last-updated
+      %span.last-updated= t('partials.feed.last_updated')
+      %span.last-updated-time
+        - if feed.last_fetched
+          = I18n.l(feed.last_fetched)
+        - else
+          = t("partials.feed.last_fetched.never")
+    .col-xs-2
+      %span.read-feed
+        %a.icon-external-link{href: feed.url}
+      %span.edit-feed
+        %a.icon-edit{href: edit_feed_path(feed)}
+      %span.remove-feed
+        %a.icon-remove

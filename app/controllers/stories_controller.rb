@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
 
   def index
     @stories = current_user.feeds.map(&:stories).flatten.sort_by(&:published).group_by do |g|
-      "#{g.published.day} #{g.published.month}"
+      g.published.to_s(:pretty_day_and_month)
     end
   end
 end

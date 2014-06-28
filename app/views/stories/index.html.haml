@@ -1,7 +1,7 @@
-#stories
-  - @stories.each do |date, stories|
-    .row
-      .col-xs-12
-        %h1= date
-    .row.story-list{id: "stories-#{date.parameterize}"}
+- @stories.each do |date, stories|
+  .row(style="padding: 20px;")
+    .col-xs-12
+      %p.lead
+        %strong= date
+    .col-xs-12{id: "stories-#{date.parameterize}"}
       = render partial: "story", collection: stories

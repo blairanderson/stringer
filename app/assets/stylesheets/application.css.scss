@@ -1,8 +1,17 @@
-$navbar-border-bottom:                 #046E92;
-$column-left-border:                   $navbar-border-bottom;
-$column-right-border:                  $navbar-border-bottom;
-$nav-tabs-border-color:                $navbar-border-bottom;
+$navbar-border-bottom: #046E92;
+$column-left-border: $navbar-border-bottom;
+$column-right-border: $navbar-border-bottom;
+$nav-tabs-border-color: $navbar-border-bottom;
 $nav-tabs-justified-link-border-color: $navbar-border-bottom;
+
+.brand-background {
+  background: $navbar-border-bottom;
+}
+
+.brand-color {
+  color: $navbar-border-bottom;
+}
+
 //$nav-tabs-justified-active-link-border-color:;
 //$border-radius-base: 0px;
 
@@ -19,3 +28,4 @@ $nav-tabs-justified-link-border-color: $navbar-border-bottom;
 @import "navbar_variant";
 @import "navigation";
 @import "icons";
+@import "list_groups";
