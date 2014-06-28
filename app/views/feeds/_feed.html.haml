@@ -1,6 +1,9 @@
-= link_to feed, class: "list-group-item" do
-  = content_tag :div do
-    -  if feed.last_fetched
-      = "#{time_ago_in_words(feed.last_fetched)} ago /"
-  = content_tag :div, "#{feed.name} / #{feed.url}"
-
+.feed-item{id: "feed-#{feed.id}"}
+  .panel
+    %p.lead= link_to feed.name, feed
+    .panel-body
+      .panel.panel-default
+        .panel-heading
+          = "#{feed.name} / #{feed.url}"
+        .panel-body
+          = "#{time_ago_in_words(feed.last_fetched)} ago"
