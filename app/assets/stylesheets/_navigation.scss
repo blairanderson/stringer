@@ -2,25 +2,32 @@ nav.navbar-default {
   @include navbar-variant();
   margin-bottom: 0px;
   border-radius: 0px;
-  border: none;
+  min-height: 80px;
   border: {
     left: none;
     right: none;
     top: none;
-    bottom: solid 1px #046E92;
+    bottom: solid 1px $navbar-border-bottom;
   }
-  min-height: 80px;
-
 }
+
 a.navbar-brand {
   padding: 30px 15px;
 }
 
+.content-navigation > li > a {
+  font-size: 20px;
+  padding: 20px;
+  border-top: none;
+  border-radius: 0px;
+}
 
-.content-navigation {
-  > li > a {
-    font-size: 20px;
-    padding: 20px;
+.nav-justified.content-navigation {
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
+    border-radius: 0px;
+    border-top: none;
   }
 }
 

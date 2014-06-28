@@ -1,3 +1,11 @@
+$navbar-border-bottom:                 #046E92;
+$column-left-border:                   $navbar-border-bottom;
+$column-right-border:                  $navbar-border-bottom;
+$nav-tabs-border-color:                $navbar-border-bottom;
+$nav-tabs-justified-link-border-color: $navbar-border-bottom;
+//$nav-tabs-justified-active-link-border-color:;
+//$border-radius-base: 0px;
+
 @charset 'utf-8';
 
 @import 'bourbon';
