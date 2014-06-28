@@ -1,6 +1,7 @@
-.col-xs-12.col-lg-8#stories
+#stories
   - @stories.each do |date, stories|
-    .panel
-      %h1= date
-      .story-list{id: "stories-#{date.parameterize}"}
-        = render partial: "story", collection: stories
+    .row
+      .col-xs-12
+        %h1= date
+    .row.story-list{id: "stories-#{date.parameterize}"}
+      = render partial: "story", collection: stories
