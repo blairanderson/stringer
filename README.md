@@ -1,5 +1,6 @@
 Stingerails
 ===========
+[![Coverage Status](https://coveralls.io/repos/blairanderson/stringer/badge.png)](https://coveralls.io/r/blairanderson/stringer)
 
 Getting Started
 ---------------
