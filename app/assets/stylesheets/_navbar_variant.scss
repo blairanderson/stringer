@@ -1,0 +1,145 @@
+$variant-bg: white;
+$variant-color: if(lightness($variant-bg) > 62%, black, white);
+
+$navbar-variant-bg:                   $variant-bg;
+$navbar-variant-border:               darken($variant-bg, 3%);
+$navbar-variant-color:                $variant-color;
+$navbar-variant-brand-color:          lighten($variant-color, 35%);
+$navbar-variant-brand-hover-bg:       $navbar-inverse-brand-hover-bg;
+$navbar-variant-brand-hover-color:    $variant-color;
+$navbar-variant-border:               $variant-color;
+$navbar-variant-link-active-bg:       $navbar-inverse-link-active-bg;
+$navbar-variant-link-active-color:    $navbar-inverse-link-active-color;
+$navbar-variant-link-color:           $navbar-inverse-link-color;
+$navbar-variant-link-disabled-bg:     $navbar-inverse-link-disabled-bg;
+$navbar-variant-link-disabled-color:  $navbar-inverse-link-disabled-color;
+$navbar-variant-link-hover-bg:        $navbar-inverse-link-hover-bg;
+$navbar-variant-link-hover-color:     $navbar-inverse-link-hover-color;
+$navbar-variant-toggle-border-color:  $navbar-inverse-toggle-border-color;
+$navbar-variant-toggle-icon-bar-bg:   $navbar-inverse-toggle-icon-bar-bg;
+$navbar-variant-toggle-hover-bg:      $navbar-inverse-toggle-hover-bg;
+
+@mixin navbar-variant() {
+  background-color: $navbar-variant-bg;
+  border-color: $navbar-variant-border;
+
+  .navbar-btn {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    padding: 10px 40px;
+  }
+
+  .navbar-brand {
+    color: $navbar-variant-brand-color;
+    &:hover,
+    &:focus {
+      color: $navbar-variant-brand-hover-color;
+      background-color: $navbar-variant-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: $navbar-variant-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: $navbar-variant-link-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-variant-link-hover-color;
+        background-color: $navbar-variant-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-variant-link-active-color;
+        background-color: $navbar-variant-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-variant-link-disabled-color;
+        background-color: $navbar-variant-link-disabled-bg;
+      }
+    }
+  }
+
+  // Darken the responsive nav toggle
+  .navbar-toggle {
+    border-color: $navbar-variant-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: $navbar-variant-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: $navbar-variant-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: darken($navbar-variant-bg, 7%);
+  }
+
+  // Dropdowns
+  .navbar-nav {
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $navbar-variant-link-active-bg;
+        color: $navbar-variant-link-active-color;
+      }
+    }
+
+    @media (max-width: $grid-float-breakpoint-max) {
+      // Dropdowns get custom display
+      .open .dropdown-menu {
+        > .dropdown-header {
+          border-color: $navbar-variant-border;
+        }
+        .divider {
+          background-color: $navbar-variant-border;
+        }
+        > li > a {
+          color: $navbar-variant-link-color;
+          &:hover,
+          &:focus {
+            color: $navbar-variant-link-hover-color;
+            background-color: $navbar-variant-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-variant-link-active-color;
+            background-color: $navbar-variant-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-variant-link-disabled-color;
+            background-color: $navbar-variant-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-link {
+    color: $navbar-variant-link-color;
+    &:hover {
+      color: $navbar-variant-link-hover-color;
+    }
+  }
+
+}

@@ -1,5 +1,7 @@
-= content_tag_for :li, story do
-  .row
-    .col-xs-12
-      %h1= story.source
-      %h1= story.headline
+= div_for story do
+  .panel.panel-default
+    .panel-heading
+      = story.source
+    .panel-body
+      %p.lead
+        = story.lead

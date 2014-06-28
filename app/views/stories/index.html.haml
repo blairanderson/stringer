@@ -1,4 +1,9 @@
-%h1 Yolo
-%ul#stories
-  = render @stories
+.col-xs-12.col-lg-8#stories
+  - @stories.each do |date, stories|
+    .panel
+      %h1= date
+      .story-list{id: "stories-#{date.parameterize}"}
+        = render partial: "story", collection: stories
+
+
 

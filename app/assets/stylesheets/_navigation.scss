@@ -1,0 +1,25 @@
+nav.navbar-default {
+  @include navbar-variant();
+  margin-bottom: 0px;
+  border-radius: 0px;
+  border: none;
+  border: {
+    left: none;
+    right: none;
+    top: none;
+    bottom: solid 1px #046E92;
+  }
+  min-height: 80px;
+
+}
+a.navbar-brand {
+  padding: 30px 15px;
+}
+
+
+.content-navigation {
+  > li > a {
+    font-size: 20px;
+    padding: 20px;
+  }
+}
