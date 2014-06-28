@@ -36,6 +36,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'coveralls', require: false
   gem 'awesome_print'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
