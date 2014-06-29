@@ -1,6 +1,4 @@
-class StoriesController < ApplicationController
-  before_action :authenticate_user!
-
+class StoriesController < AccountsController
   def index
     @stories = current_user.feeds.map(&:stories).flatten.sort_by(&:published).group_by do |g|
       g.published.to_s(:pretty_day_and_month)

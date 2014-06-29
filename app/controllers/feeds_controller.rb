@@ -1,5 +1,4 @@
-class FeedsController < ApplicationController
-  before_action :authenticate_user!
+class FeedsController < AccountsController
   before_action :set_feed, only: [:show]
 
   def index
