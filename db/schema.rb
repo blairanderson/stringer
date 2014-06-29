@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627053154) do
+ActiveRecord::Schema.define(version: 20140629160251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 20140627053154) do
   end
 
   add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
+
+  create_table "messages", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.text     "content"
+    t.integer  "status_cd",  default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["status_cd"], name: "index_messages_on_status_cd", using: :btree
+  add_index "messages", ["user_id", "status_cd"], name: "index_messages_on_user_id_and_status_cd", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "stories", force: true do |t|
     t.text     "title"

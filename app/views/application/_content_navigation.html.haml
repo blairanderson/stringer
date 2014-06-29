@@ -1,11 +1,11 @@
-%ul.nav.nav-tabs.nav-justified.content-navigation{role: "content_navigation"}
-  -#%li{class: (current_page?(tweeds_path))}
-  -#  = link_to "Content", tweeds_path
-  %li{class: (current_page?(stories_path) ? "active" : "" )}
-    = link_to "Stories", stories_path
-  %li{class: (current_page?(feeds_path) ? "active" : "" )}
-    = link_to "Feeds", feeds_path
+%ul.nav.nav-tabs.nav-justified.content-navigation{role: 'content_navigation'}
+  %li{class: ('active' if current_page?(messages_path))}
+    = link_to 'Content', messages_path
+  %li{class: ('active' if current_page?(stories_path))}
+    = link_to 'Stories', stories_path
+  %li{class: ('active' if current_page?(feeds_path))}
+    = link_to 'Feeds', feeds_path
   %li
-    %a{href: "#"} Schedule
+    %a{href: '#'} Schedule
   %li
-    %a{href: "#"} Settings
+    %a{href: '#'} Settings

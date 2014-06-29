@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
 
   has_many :user_stories
   has_many :stories, through: :user_stories
+
+  has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy
 end
