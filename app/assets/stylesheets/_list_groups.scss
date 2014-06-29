@@ -8,12 +8,12 @@ li.story, li.feed {
   margin-bottom: 7px;
   background-color: white;
   border-radius: 5px;
-  border: 3px solid $navbar-border-bottom;
+  border: 1px solid $navbar-border-bottom;
   padding: 10px 30px;
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
   transform: rotate(0);
-  color: #484948;
+  color: black;
 }
 
 li.story .story-body a, .setup a, .footer-links a {

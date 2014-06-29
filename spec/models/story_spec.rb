@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Story do
   describe "associations" do
-    it {should belong_to(:feed).dependent(:destroy)}
+    it {should belong_to(:feed)}
     it {should have_many(:user_stories)}
     it {should have_many(:users).through(:user_stories)}
   end

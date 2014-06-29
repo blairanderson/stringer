@@ -12,6 +12,11 @@ $nav-tabs-justified-link-border-color: $navbar-border-bottom;
   color: $navbar-border-bottom;
 }
 
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 //$nav-tabs-justified-active-link-border-color:;
 //$border-radius-base: 0px;
 
@@ -29,3 +34,4 @@ $nav-tabs-justified-link-border-color: $navbar-border-bottom;
 @import "navigation";
 @import "icons";
 @import "list_groups";
+

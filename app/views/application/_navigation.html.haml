@@ -18,18 +18,17 @@
             %button.btn.btn-link.navbar-btn{href: "#"} Help
           %li.dropdown
             %button.btn.btn-link.navbar-btn.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-              Account
+              My Account
               %span.caret
             %ul.dropdown-menu{role: "menu"}
               %li
-                %a{href: "#"} Action
+                %a{href: "#"} Email Settings
               %li
-                %a{href: "#"} Another action
+                = link_to 'Access & Password', edit_user_registration_path
               %li
-                %a{href: "#"} Something else here
+                = link_to "Upgrade!", "#"
               %li.divider
               %li
-                %a{href: "#"} Separated link
-              %li.divider
-              %li
-                %a{href: "#"} One more separated link
+                = link_to 'Logout', destroy_user_session_path, :method => :delete
+
+

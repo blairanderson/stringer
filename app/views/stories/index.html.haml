@@ -1,7 +1,6 @@
 - @stories.each do |date, stories|
-  .row(style="padding: 20px;")
+  .row
     .col-xs-12
-      %p.lead
-        %strong= date
+      %p.lead= date
     .col-xs-12{id: "stories-#{date.parameterize}"}
       = render partial: "story", collection: stories

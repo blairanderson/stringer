@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe FeedsController do
-
   before :each do
     @user = create(:user, email: "email@example.com", password: "password")
     login_user @user
