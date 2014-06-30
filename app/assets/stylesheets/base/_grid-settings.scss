@@ -22,5 +22,8 @@ $large-screen-up: new-breakpoint(min-width $large-screen 8);
 
 .column-right {
   height: 100%;
-  border-left: 1px solid $column-right-border;
+  border: {
+    left: 1px solid $column-right-border;
+    right: 1px solid $column-left-border;
+  }
 }

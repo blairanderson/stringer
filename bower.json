@@ -17,7 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "twitter-text": "git@github.com:twitter/twitter-text-js.git#~1.9.0",
+    "twitter-text": "git@github.com:blairanderson/twitter-text-js.git#~1.9.1",
     "lodash": "~2.4.1"
   }
 }

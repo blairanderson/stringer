@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require twitter-text/pkg/twitter-text-1.9.0
+//= require twitter-text
 //= require paloma
 //= require_tree .
 
