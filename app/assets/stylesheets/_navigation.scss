@@ -15,22 +15,31 @@ a.navbar-brand {
   padding: 30px 15px;
 }
 
-.content-navigation > li > a {
-  font-size: 20px;
-  padding: 20px;
-  border-top: none;
-  border-radius: 0px;
-}
-
 .nav-justified.content-navigation {
+  > li > a {
+    font-size: 20px;
+    padding: 20px;
+    border-top: none;
+    border-radius: 0px;
+    @media (max-width: $screen-sm-min) {
+      padding: 0;
+      border-bottom: 1px solid;
+    }
+  }
+
   > .active > a,
   > .active > a:hover,
   > .active > a:focus {
-    border-radius: 0px;
     border-top: none;
+    border-radius: 0px;
   }
 }
 
 .dropdown-menu {
   top: 116%;
+}
+
+.navbar-toggle {
+  padding: 15px 10px;
+  margin-top: 16px;
 }

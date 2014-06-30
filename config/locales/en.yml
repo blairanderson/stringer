@@ -150,3 +150,5 @@ en:
     title: 'Stringer is '
     your_feeds: your feeds
     your_stories: your stories
+  messages:
+    new: "New Tweet"

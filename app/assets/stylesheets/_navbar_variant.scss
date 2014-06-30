@@ -15,9 +15,9 @@ $navbar-variant-link-disabled-bg:     $navbar-inverse-link-disabled-bg;
 $navbar-variant-link-disabled-color:  $navbar-inverse-link-disabled-color;
 $navbar-variant-link-hover-bg:        $navbar-inverse-link-hover-bg;
 $navbar-variant-link-hover-color:     $navbar-inverse-link-hover-color;
-$navbar-variant-toggle-border-color:  $navbar-inverse-toggle-border-color;
-$navbar-variant-toggle-icon-bar-bg:   $navbar-inverse-toggle-icon-bar-bg;
-$navbar-variant-toggle-hover-bg:      $navbar-inverse-toggle-hover-bg;
+$navbar-variant-toggle-border-color:  $border-outline-color;
+$navbar-variant-toggle-icon-bar-bg:   $border-outline-color;
+$navbar-variant-toggle-hover-bg:      darken($variant-bg, 3%);
 
 @mixin navbar-variant() {
   background-color: $navbar-variant-bg;
@@ -79,6 +79,7 @@ $navbar-variant-toggle-hover-bg:      $navbar-inverse-toggle-hover-bg;
     }
     .icon-bar {
       background-color: $navbar-variant-toggle-icon-bar-bg;
+//      background-color: $navbar-variant-toggle-icon-bar-bg;
     }
   }
 

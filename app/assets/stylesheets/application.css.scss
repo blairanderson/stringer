@@ -1,15 +1,17 @@
-$navbar-border-bottom: #046E92;
-$column-left-border: $navbar-border-bottom;
-$column-right-border: $navbar-border-bottom;
-$nav-tabs-border-color: $navbar-border-bottom;
-$nav-tabs-justified-link-border-color: $navbar-border-bottom;
+$brand-primary: #046E92;
+$border-outline-color: $brand-primary;
+$navbar-border-bottom: $brand-primary;
+$column-left-border: $brand-primary;
+$column-right-border: $brand-primary;
+$nav-tabs-border-color: $brand-primary;
+$nav-tabs-justified-link-border-color: $brand-primary;
 
 .brand-background {
-  background: $navbar-border-bottom;
+  background: $brand-primary;
 }
 
 .brand-color {
-  color: $navbar-border-bottom;
+  color: $brand-primary;
 }
 
 *, *:before, *:after {
@@ -22,14 +24,15 @@ $nav-tabs-justified-link-border-color: $navbar-border-bottom;
 
 @charset 'utf-8';
 
+@import "font-awesome";
+@import "imports";
+
 @import 'bourbon';
 @import 'base/grid-settings';
 @import 'neat';
 @import 'base/base';
 
-@import "font-awesome";
-@import "imports";
-@import "forms";
+@import "wtf_forms";
 @import "navbar_variant";
 @import "navigation";
 @import "icons";

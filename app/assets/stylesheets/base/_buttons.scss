@@ -1,7 +1,22 @@
 button,
 input[type="submit"] {
-  border: none;
-  cursor: pointer;
-  user-select: none;
+  @extend .btn;
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
 }
 
+.btn-nolink {
+  color: $gray;
+  cursor: default;
+  font-weight: normal;
+  border-radius: 0;
+
+  &, &:active,  &[disabled], fieldset[disabled] & {
+    background-color: transparent;
+    @include box-shadow(none);
+  }
+
+  &, &:hover, &:focus, &:active {
+    border-color: transparent;
+    background: white;
+  }
+}
