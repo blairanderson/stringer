@@ -1,0 +1,23 @@
+{
+  "name": "stingerails",
+  "version": "0.0.1",
+  "homepage": "https://github.com/blairanderson/stringer",
+  "authors": [
+    "Blair Anderson <blair81@gmail.com>"
+  ],
+  "description": "twitter + feeds + scheduling",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "twitter-text": "git@github.com:twitter/twitter-text-js.git#~1.9.0",
+    "lodash": "~2.4.1"
+  }
+}

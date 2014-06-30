@@ -10,7 +10,16 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require lodash
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require twitter-text/pkg/twitter-text-1.9.0
+//= require paloma
 //= require_tree .
+
+
+$(document).on('page:restore', function () {
+    // Manually evaluates the appended script tag.
+    Paloma.executeHook();
+});
