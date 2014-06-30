@@ -1,3 +1,4 @@
+.btn,
 button,
 input[type="submit"] {
   @extend .btn;
@@ -19,4 +20,13 @@ input[type="submit"] {
     border-color: transparent;
     background: white;
   }
+}
+
+
+.btn-link {
+  border: none;
+}
+
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
 }

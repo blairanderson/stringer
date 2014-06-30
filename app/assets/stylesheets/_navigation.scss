@@ -33,6 +33,13 @@ a.navbar-brand {
     border-top: none;
     border-radius: 0px;
   }
+
+  li:first-child > a {
+    border-left: none !important;
+  }
+  li:last-child > a {
+    border-right: none !important;
+  }
 }
 
 .dropdown-menu {

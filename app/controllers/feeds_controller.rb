@@ -3,7 +3,7 @@ class FeedsController < AccountsController
 
   def index
     @feeds = current_user.feeds
-    FetchFeeds.new(@feeds).delay.fetch_all
+    # FetchFeeds.new(@feeds).delay.fetch_all
   end
 
   def new

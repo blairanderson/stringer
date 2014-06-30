@@ -7,5 +7,5 @@
     = link_to 'Feeds', feeds_path
   %li
     %a{href: '#'} Schedule
-  %li
-    %a{href: '#'} Settings
+  %li{class: ('active' if current_page?(edit_user_registration_path))}
+    = link_to 'Settings', edit_user_registration_path

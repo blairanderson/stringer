@@ -1,7 +1,7 @@
 = div_for story do
   .col-xs-12.col-lg-2
-    %p.lead Icons
-    %p.lead Actions
+    %button.btn-primary.btn-block Icons
+    %button.btn-primary.btn-block Actions
   .col-xs-12.col-lg-10
     .panel.panel-default
       .panel-heading
@@ -9,7 +9,7 @@
           .col-xs-12.col-md-8
             %strong= story.lead
           .col-xs-12.col-md-4
-            = link_to "Tweed It!", story, class: "btn btn-info btn-block"
+            = link_to "Tweed It!", story, class: "btn btn-primary btn-block"
       .panel-body
         %p.lead
           = story.body.html_safe

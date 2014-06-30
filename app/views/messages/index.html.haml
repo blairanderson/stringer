@@ -1,5 +1,6 @@
 .row
   .col-xs-12
-    = link_to t('messages.new'), new_message_path, class: "btn btn-primary btn-lg"
+    .form-group
+      = link_to t('messages.new'), new_message_path, class: "btn btn-primary btn-lg"
   .col-xs-12
     = render @messages
