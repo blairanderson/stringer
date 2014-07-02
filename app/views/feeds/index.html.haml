@@ -1,2 +1,6 @@
 %ul#feed-list
+  %li.feed
+    .row
+      .col-xs-12
+        = render "form", feed: Feed.new
   = render @feeds
