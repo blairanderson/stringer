@@ -1,6 +1,7 @@
-= simple_form_for @message do |f|
-  .form-group
-    = f.input :content
-  .form-group.actions
-    = f.button :submit
-    %button.btn-nolink.length 140
+.panel.panel-default
+  = simple_form_for message do |f|
+    .panel-body
+      = f.input :content, label: false, placeholder: t('messages.new')
+    .panel-footer.actions
+      = f.button :submit, class: "btn btn-primary"
+      %button.btn-nolink.length(style="pointer-events:none;") 140
