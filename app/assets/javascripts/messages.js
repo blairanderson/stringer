@@ -26,7 +26,7 @@ var message_key_up = function messageKeyUp() {
         $actions.addClass('disabled')
     }
 };
-var messageKeyUp = _.debounce(message_key_up, 200);
+var messageKeyUp = message_key_up;
 
 MessagesController.prototype.new = function () {
     var $form = $("form#new_message");

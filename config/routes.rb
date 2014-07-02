@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :messages, except: [:show]
   resources :feeds
   resources :stories, path: "news"
+  resources :schedules, except: [:show]
 end

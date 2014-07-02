@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   has_many :stories, through: :feeds
 
   has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy
+  has_many :schedules
 end
