@@ -1,0 +1,19 @@
+- title ||= "Pass in a Modal title!"
+#modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "modal", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", type: "button"}
+          %span{"aria-hidden" => "true"} &#215;
+          %span.sr-only Close
+        %h4#modalLabel.modal-title= title
+      .modal-body
+        = yield :modal_body
+        %h1
+          this is a bunch of good stuff
+
+      .modal-footer
+        = yield :modal_footer
+        %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+        %button.btn.btn-primary{type: "button"} Save changes
+

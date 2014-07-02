@@ -4,3 +4,7 @@
       %p.lead= date
     .col-xs-12{id: "stories-#{date.parameterize}"}
       = render partial: "story", collection: stories
+
+%button.btn.btn-primary.btn-lg{"data-target" => "#modal", "data-toggle" => "modal", href: new_message_path}
+  Launch demo modal
+= render "modal", title: t('messages.new')
