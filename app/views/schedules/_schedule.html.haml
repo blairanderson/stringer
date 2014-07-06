@@ -1,6 +1,10 @@
-= time_ago_in_words schedule.created_at
-= binding.pry
-- schedule.schedule_days.each do |sd|
-  = sd.active
-  = sd.day.short
-  = sd.day.long
+.btn-group
+  - Schedule::DAYS.each do |day|
+    = link_to day.to_s, schedule_path(schedule, toggle: day), method: :patch, class: "btn #{schedule.send(day) == :active ? 'btn-primary' : 'btn-default'}"
+
+
+- schedule.schedule_times.each do |time|
+  = simple_form_for time, url: schedule_time_path(schedule, time) do |f|
+    = f.input :time
+
+= link_to t('schedule_time.new'), schedule_times_path(schedule), method: :post, class: "btn btn-info"
