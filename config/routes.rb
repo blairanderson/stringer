@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :messages, except: [:show]
   resources :feeds
   resources :stories, path: "news"
-  resources :schedules, except: [:show]
+  resources :schedules, except: [:show, :edit] do
+    resources :schedule_times, except: [:index, :show, :new, :edit], path: "times", as: :times
+  end
 end

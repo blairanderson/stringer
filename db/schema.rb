@@ -16,14 +16,6 @@ ActiveRecord::Schema.define(version: 20140702045838) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "days", force: true do |t|
-    t.integer  "number"
-    t.string   "short"
-    t.string   "long"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -64,18 +56,6 @@ ActiveRecord::Schema.define(version: 20140702045838) do
   add_index "messages", ["user_id", "status_cd"], name: "index_messages_on_user_id_and_status_cd", using: :btree
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
-  create_table "schedule_days", force: true do |t|
-    t.boolean  "active",      default: true, null: false
-    t.integer  "day_id",                     null: false
-    t.integer  "schedule_id",                null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "schedule_days", ["day_id", "schedule_id"], name: "index_schedule_days_on_day_id_and_schedule_id", unique: true, using: :btree
-  add_index "schedule_days", ["day_id"], name: "index_schedule_days_on_day_id", using: :btree
-  add_index "schedule_days", ["schedule_id"], name: "index_schedule_days_on_schedule_id", using: :btree
-
   create_table "schedule_times", force: true do |t|
     t.time     "time"
     t.integer  "schedule_id"
@@ -87,6 +67,13 @@ ActiveRecord::Schema.define(version: 20140702045838) do
 
   create_table "schedules", force: true do |t|
     t.integer  "user_id"
+    t.integer  "sunday_cd",    default: 0, null: false
+    t.integer  "monday_cd",    default: 0, null: false
+    t.integer  "tuesday_cd",   default: 0, null: false
+    t.integer  "wednesday_cd", default: 0, null: false
+    t.integer  "thursday_cd",  default: 0, null: false
+    t.integer  "friday_cd",    default: 0, null: false
+    t.integer  "saturday_cd",  default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

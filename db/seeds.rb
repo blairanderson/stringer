@@ -6,6 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create([
-    {email: "blair81@gmail.com", password: "password"}
-            ])
+b = User.create(email: "blair81@gmail.com", password: "password")
+
+quickleft = Feed.add(url: "http://quickleft.com/blog.rss")
+if quickleft
+  b.feeds << quickleft
+end
+
+hypem = Feed.add(url: "http://hypem.com/feed/loved/blairanderson/1/feed.xml")
+if hypem
+  b.feeds << hypem
+end

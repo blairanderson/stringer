@@ -1,8 +1,8 @@
 class CreateScheduleTimes < ActiveRecord::Migration
   def change
     create_table :schedule_times do |t|
-      t.time :time
-      t.references :schedule, index: true
+      t.time :time, null: false
+      t.integer :schedule_id, null: false
 
       t.timestamps
     end

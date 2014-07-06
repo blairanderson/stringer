@@ -1,0 +1,2 @@
+class ScheduleTimesController < AccountsController
+end

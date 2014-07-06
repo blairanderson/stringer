@@ -152,3 +152,5 @@ en:
     your_stories: your stories
   messages:
     new: "New Tweet"
+  schedule_time:
+    new: "Add Tweet Time"
