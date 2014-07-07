@@ -154,3 +154,6 @@ en:
     new: "New Tweet"
   schedule_time:
     new: "Add Tweet Time"
+  schedule:
+    time:
+      delete: "Remove Time"

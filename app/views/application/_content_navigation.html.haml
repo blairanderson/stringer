@@ -1,11 +1,6 @@
 %ul.nav.nav-tabs.nav-justified.content-navigation{role: 'content_navigation'}
-  %li{class: ('active' if current_page?(messages_path))}
-    = link_to 'Content', messages_path
-  %li{class: ('active' if current_page?(stories_path))}
-    = link_to 'Stories', stories_path
-  %li{class: ('active' if current_page?(feeds_path))}
-    = link_to 'Feeds', feeds_path
-  %li{class: ('active' if current_page?(schedules_path))}
-    = link_to 'Schedules', schedules_path
-  %li{class: ('active' if current_page?(edit_user_registration_path))}
-    = link_to 'Settings', edit_user_registration_path
+  = content_nav_link_to 'Queue', messages_path
+  = content_nav_link_to 'Schedules', schedules_path
+  = content_nav_link_to 'Stories', stories_path
+  = content_nav_link_to 'Feeds', feeds_path
+  = content_nav_link_to 'Settings', edit_user_registration_path
