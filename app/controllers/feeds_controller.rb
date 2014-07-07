@@ -3,7 +3,7 @@ class FeedsController < AccountsController
 
   def index
     @feeds = current_user.feeds
-    FetchFeeds.new(@feeds).delay.fetch_all
+    FetchFeeds.new(@feeds).fetch_all
   end
 
   def new
@@ -29,7 +29,7 @@ class FeedsController < AccountsController
 
   def redirect_to_feed
     FetchFeeds.new([@feed]).delay.fetch_all
-    redirect_to @feed
+    redirect_to feeds_path
   end
 
   def show

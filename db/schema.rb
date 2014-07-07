@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20140702045838) do
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "schedule_times", force: true do |t|
-    t.time     "time"
-    t.integer  "schedule_id"
+    t.time     "time",        null: false
+    t.integer  "schedule_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,7 +78,14 @@ ActiveRecord::Schema.define(version: 20140702045838) do
     t.datetime "updated_at"
   end
 
+  add_index "schedules", ["friday_cd"], name: "index_schedules_on_friday_cd", using: :btree
+  add_index "schedules", ["monday_cd"], name: "index_schedules_on_monday_cd", using: :btree
+  add_index "schedules", ["saturday_cd"], name: "index_schedules_on_saturday_cd", using: :btree
+  add_index "schedules", ["sunday_cd"], name: "index_schedules_on_sunday_cd", using: :btree
+  add_index "schedules", ["thursday_cd"], name: "index_schedules_on_thursday_cd", using: :btree
+  add_index "schedules", ["tuesday_cd"], name: "index_schedules_on_tuesday_cd", using: :btree
   add_index "schedules", ["user_id"], name: "index_schedules_on_user_id", using: :btree
+  add_index "schedules", ["wednesday_cd"], name: "index_schedules_on_wednesday_cd", using: :btree
 
   create_table "stories", force: true do |t|
     t.text     "title"

@@ -6,5 +6,7 @@ class CreateScheduleTimes < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :schedule_times, :schedule_id
   end
 end

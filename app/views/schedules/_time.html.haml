@@ -4,5 +4,7 @@
       = link_to t('schedule.time.delete'), schedule_time_path(schedule, time), method: :delete
 
     .col-xs-12.col-sm-9
-      = simple_form_for time, url: schedule_time_path(schedule, time) do |f|
-        = f.input :time, ampm: true
+      = simple_form_for time, url: schedule_time_path(schedule, time), html: {class: "form-inline"} do |f|
+        .form-group
+          = f.input :time, ampm: true
+        = f.submit :Confirm, class: "btn btn-info"

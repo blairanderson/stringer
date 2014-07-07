@@ -13,6 +13,7 @@
 //= require lodash
 //= require jquery
 //= require jquery_ujs
+//= require thedirt/jquery.theDirt
 //= require bootstrap
 //= require twitter-text
 //= require paloma

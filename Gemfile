@@ -17,6 +17,7 @@ gem 'font-awesome-rails', git: 'https://github.com/blairanderson/font-awesome-ra
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'jquery-rails'
+# gem 'jquery-thedirt-rails', git: 'git://github.com/blairanderson/jquery-thedirt-rails.git'
 gem 'neat', '~> 1.5.1'
 gem 'paloma'
 gem 'pg'
