@@ -3,10 +3,13 @@ class ScheduleTimesController < AccountsController
 
   def create
     @schedule.schedule_times.create(time: Time.now)
-    redirect_to schedules_path
+    redirect_to :back
   end
 
   def destroy
+    time = @schedule.schedule_times.find(params[:id])
+    time.destroy
+    redirect_to :back
   end
 
   private
