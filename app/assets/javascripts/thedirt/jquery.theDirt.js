@@ -14,115 +14,114 @@
  *  @example
  *    // Basic initialisation
  *    $(document).ready( function {
-	 *      $('#example').theDirt();
-	 *    } );
- *
- *  @example
- *    // Initialisation with configuration options - in this case, Green
- *    $(document).ready( function {
-	 *      $('#example').theDirt( {"color": 'green'} );
-	 *    } );
+ *      $('#example').theDirt();
+ *    } );
  */
 
-$(function(){
-  var now = Date.now || function() { return new Date().getTime(); };
+$(function () {
+  var theDirt = function (options) {
+    var $el = $(this),
+        $selects = $el.find('select'),
+        $submitButton = $el.find("input[type='submit']");
 
-  var throttle = function(func, wait, options) {
-    var context, args, result;
-    var timeout = null;
-    var previous = 0;
-    options || (options = {});
-    var later = function() {
-      previous = options.leading === false ? 0 : now();
-      timeout = null;
-      result = func.apply(context, args);
-      context = args = null;
-    };
-    return function() {
-      var now = now();
-      if (!previous && options.leading === false) previous = now;
-      var remaining = wait - (now - previous);
-      context = this;
-      args = arguments;
-      if (remaining <= 0) {
-        clearTimeout(timeout);
-        timeout = null;
-        previous = now;
-        result = func.apply(context, args);
-        context = args = null;
-      } else if (!timeout && options.trailing !== false) {
-        timeout = setTimeout(later, remaining);
-      }
-      return result;
-    };
-  };
+    debugger
 
+    // rails form should be remote-true
+    $el.attr('data-remote', true);
 
-  var theDirt = function( options ){
-    $el = $(this);
+    for (var i = $selects.length - 1; i >= 0; i--) {
+      var obj = $($selects[i]);
+      obj.data('start', obj.val() );
+      obj.addClass('disabled');
+      console.log(obj.data('start'));
+    }
 
-    $el.attr('data-remote', true)
+    // on input change, submit the form
+    // on input change, change form button to 'dirty'
+    // on form ajax error, show error
+    // on form ajax success, change to default
 
     // form error
-    $el.ajaxError(function(e, request, settings) {
-      var $form = $(e.currentTarget),
-        $textarea = $form.find('textarea');
-      $form.addClass('active.error');
-      $form.find("input[type='submit']").val('Not Saved... Try Again...');
-      $textarea.attr('data-start', $textarea.val() );
+    $el.ajaxError(function (e, request, settings) {
+      $submitButton.val('Try Again.');
     });
 
     // form success
-    $el.bind('ajax:success', function(e, data, status, xhr){
-      var $form = $(e.currentTarget),
-        $textarea = $form.find('textarea');
-      $form.removeClass('active');
-      $form.removeClass('error');
-      $form.find("input[type='submit']").val('Saved');
-      $textarea.attr('data-start', $textarea.val() );
+    $el.on('ajax:success', function (e, data, status, xhr) {
+      var $form = $(e.currentTarget);
+      $submitButton.val('Saved');
+      // reset the start attributes
     });
-
-    // store a copy of the current content
-    var $textfields = $('textarea');
-
-    for (var i = $textfields.length - 1; i >= 0; i--) {
-      var $textarea = $( $textfields[i] );
-      $textarea.attr('data-start', $textarea.val() );
-    };
 
     // when anything changes on an input, change the button to 'saving...' or 'saved' whenever it should
-    $textfields.bind('input propertychange', function(e) {
-      var $textarea = $( e.currentTarget );
-      var $form = $textarea.closest('form');
-      if( $textarea.val() != $textarea.data("start") ){
-        $form.addClass('active');
-        $form.find("input[type='submit']").val('Saving...');
-      } else {
-        $form.removeClass('active');
-        $form.find("input[type='submit']").val('Saved');
+    $selects.change(function (e) {
+      $this = $(this)
+      if ($this.val() != $this.data("start")) {
+        $submitButton.removeClass('disabled');
+        // $el.submit();
       }
     });
-
-    // when a user starts typing, call the timer to save
-    $('textarea').keyup(throttle(function(e){
-      var $textarea = $(e.currentTarget);
-      if( $textarea.val() != $textarea.data("start") ){
-        $textarea.closest('form').submit();
-      }
-    }));
-
-    //  when a suer leave a text box, save the data
-    $('textarea').blur(function(e) {
-      var $textarea = $(e.currentTarget);
-      if( $textarea.val() != $textarea.data("start") ){
-        $textarea.closest('form').submit();
-      }
-    });
-  };
+  }
 
   theDirt.version = "0.0.1";
   // jQuery aliases
   $.fn.theDirt = theDirt;
-  $.fn.TheDirt = theDirt;
   $.fn.theDirtSettings = theDirt.settings;
-})
+});
+
+
+
+;(function ( $, window, document, undefined ) {
+  // Create the defaults once
+  var pluginName = "theDirt";
+
+  // The actual plugin constructor
+  function theDirt ( element, options ) {
+    this.element = element;
+    this.settings = $.extend( {}, defaults, options );
+    this._defaults = defaults;
+    this._name = pluginName;
+    this.init();
+  }
+
+  $.extend(ajaxWizard.prototype, {
+    init: function () {
+      $(this.element).find('fieldset:first-child').addClass('current');
+      this.eventListeners();
+    },
+    eventListeners: function () {
+      var self = this;
+
+      $(this.element).on('submit', function(e){
+        e.preventDefault();
+        self.whenCallingNextStep(this);
+      });
+
+      $(this.element).on('click', this.settings.controlSelectors.forward, function(){
+        self.whenCallingNextStep(this);
+      });
+
+      $(this.element).on('click', this.settings.controlSelectors.backward, function(){
+        self.backward();
+      });
+    },
+    animate: function(from, to){
+      from.hide().removeClass('current');
+      to.fadeIn().addClass('current');
+    }
+  });
+
+  // A really lightweight plugin wrapper around the constructor,
+  // preventing against multiple instantiations
+  $.fn[ pluginName ] = function ( options ) {
+    this.each(function() {
+      if ( !$.data( this, "plugin_" + pluginName ) ) {
+        $.data( this, "plugin_" + pluginName, new theDirt( this, options ) );
+      }
+    });
+
+    // chain jQuery functions
+    return this;
+  };
+
+})( jQuery, window, document );

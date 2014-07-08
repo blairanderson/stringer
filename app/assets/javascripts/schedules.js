@@ -6,5 +6,5 @@
 var SchedulesController = Paloma.controller('Schedules');
 
 SchedulesController.prototype.index = function () {
-  $('form').TheDirt({"color": 'green'})
+//  $('form').theDirt()
 };
