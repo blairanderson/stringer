@@ -11,17 +11,15 @@ This repository comes equipped with a self-setup script:
 
 __Make Sure PostGreSQL is running!__
 
-    bundle install
+    $ bundle install
 
-    ./bin/setup
+    $ ./bin/setup
 
-    rake db:migrate
+    $ rake db:migrate:reset db:seed
 
-After setting up, you can run the application using [foreman]:
+After setting up, you can run the application using [foreman](http://ddollar.github.io/foreman/):
 
-    % foreman start
-
-[foreman]: http://ddollar.github.io/foreman/
+    $ foreman start
 
 ## Guidelines
 
@@ -33,7 +31,4 @@ programming in style.
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
 
 
-TODO:
-- travis ci
-- fetch feeds
-- user can schedule things.
+# [TODOs](https://waffle.io/blairanderson/stringer)
