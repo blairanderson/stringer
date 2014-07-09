@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/blairanderson/stringer.png?label=ready&title=Ready)](https://waffle.io/blairanderson/stringer)
 Stingerails
 ===========
 [![Coverage Status](https://coveralls.io/repos/blairanderson/stringer/badge.png)](https://coveralls.io/r/blairanderson/stringer)
