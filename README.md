@@ -8,9 +8,11 @@ Getting Started
 
 This repository comes equipped with a self-setup script:
 
+__Make Sure PostGreSQL is running!__
+
     bundle install
 
-    % ./bin/setup
+    ./bin/setup
 
     rake db:migrate
 

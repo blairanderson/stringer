@@ -17,3 +17,5 @@ hypem = Feed.add(url: "http://hypem.com/feed/loved/blairanderson/1/feed.xml")
 if hypem
   b.feeds << hypem
 end
+
+FetchFeeds.new(b.feeds).fetch_all
