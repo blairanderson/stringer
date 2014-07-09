@@ -1,7 +1,8 @@
-[![Stories in Ready](https://badge.waffle.io/blairanderson/stringer.png?label=ready&title=Ready)](https://waffle.io/blairanderson/stringer)
 Stingerails
 ===========
 [![Coverage Status](https://coveralls.io/repos/blairanderson/stringer/badge.png)](https://coveralls.io/r/blairanderson/stringer)
+[![Build Status](https://travis-ci.org/blairanderson/stringer.svg?branch=master)](https://travis-ci.org/blairanderson/stringer)
+[![Stories in Ready](https://badge.waffle.io/blairanderson/stringer.png?label=ready&title=Ready)](https://waffle.io/blairanderson/stringer)
 
 Getting Started
 ---------------
