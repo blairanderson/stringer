@@ -43,23 +43,23 @@ $navbar-variant-toggle-hover-bg:      darken($variant-bg, 3%);
   }
 
   .navbar-nav {
-    > li > a {
-      color: $navbar-variant-link-color;
-
-      &:hover,
-      &:focus {
-        color: $navbar-variant-link-hover-color;
-        background-color: $navbar-variant-link-hover-bg;
-      }
-    }
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: $navbar-variant-link-active-color;
-        background-color: $navbar-variant-link-active-bg;
-      }
-    }
+//    > li > a {
+//      color: $navbar-variant-link-color;
+//
+//      &:hover,
+//      &:focus {
+//        color: $navbar-variant-link-hover-color;
+//        background-color: $navbar-variant-link-hover-bg;
+//      }
+//    }
+//    > .active > a {
+//      &,
+//      &:hover,
+//      &:focus {
+//        color: $navbar-variant-link-active-color;
+//        background-color: $navbar-variant-link-active-bg;
+//      }
+//    }
     > .disabled > a {
       &,
       &:hover,
