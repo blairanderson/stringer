@@ -84,7 +84,7 @@ $(function () {
     this.init();
   }
 
-  $.extend(ajaxWizard.prototype, {
+  $.extend(theDirt.prototype, {
     init: function () {
       $(this.element).find('fieldset:first-child').addClass('current');
       this.eventListeners();

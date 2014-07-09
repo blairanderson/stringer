@@ -7,5 +7,4 @@ StoriesController.prototype.index = function () {
     $('#myModal').on('hidden', function () {
         $(this).removeData('modal');
     });
-    debugger
 };
