@@ -2,10 +2,10 @@
   .col-xs-12.col-sm-3
     .btn-group-vertical.btn-block
       - Schedule::DAYS.each do |day|
-        = link_to day.to_s, schedule_path(schedule, toggle: day), method: :patch, class: "btn #{schedule.send(day) == :active ? 'btn-primary' : 'btn-default'}"
+        = link_to day.to_s, schedule_path(schedule, toggle: day), method: :patch, class: "button #{schedule.send(day) == :active ? 'primary' : 'default'}"
     %p.lead= link_to "Possibly change these buttons to switches.", "http://goratchet.com/components/"
   .col-xs-12.col-sm-6
     .list-group
-      = link_to t('schedule_time.new'), schedule_times_path(schedule), method: :post, class: "btn btn-info btn-block"
+      = link_to t('schedule_time.new'), schedule_times_path(schedule), method: :post, class: "button btn-info btn-block"
     .list-group
       = render partial: "time", collection: schedule.schedule_times, locals: {schedule: schedule}
