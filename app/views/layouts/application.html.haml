@@ -17,6 +17,8 @@
           .row
             = render partial: "application/content_navigation"
           .row
+            = render partial: "flashes"
+          .row
             .col-xs-12(style="padding: 30px;")
               = yield
     = render 'javascript'

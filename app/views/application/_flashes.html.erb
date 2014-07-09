@@ -1,3 +1,9 @@
 <% flash.each do |key, value| -%>
-  <span id="flash-<%= key %>"><%= value %></span>
+    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <strong><%= key.to_s.titleize %></strong> <%= value %>
+    </div>
 <% end -%>
+
+
