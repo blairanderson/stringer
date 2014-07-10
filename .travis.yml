@@ -23,7 +23,7 @@ addons:
 deploy:
   provider: heroku
   api_key:
-    secure: IZDOwARzy9kfhTMpBlfrHJlFEROjFqrXmqdJ4ZQ78hluuVZZ7chu7HU+LtoY1VvlnszQRhEDkRi0zaosDBlW6waQ8mQqJi5fAqMHpKqSpiO5epjm5dXqhVLq4l0FgpMGo0DecOVTTO59KBvU5KZIwAe9WxM9DTV53FYU1VTJCDo=
-  app: stringer
+    secure: H/OrUyXs9RYatnzcMvPg7X07HXuZV1KzIgk04gdmSKI6r84OfY5clADsQLiEGHjU4ebGY6L1j8owKN7wk7Mw2jXSgHJqWxG7sos4GoqqG8uNA6NnuYNT5BAlFDopsJRravDVxO5ziexTkOrENsjSxOv4MlDTj5qA+xVDU3PrO+8=
+  app: tweed-stage
   on:
     repo: blairanderson/stringer
