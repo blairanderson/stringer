@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy
   has_many :schedules
 
+  validates :time_zone, inclusion: {in: ActiveSupport::TimeZone.all.map(&:name)}
+
   def grouped_stories
     stories.group_by { |g| g.published.to_s(:pretty_day_and_month) }
   end

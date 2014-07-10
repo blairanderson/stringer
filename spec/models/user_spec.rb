@@ -9,6 +9,10 @@ describe User do
     it { should have_many(:messages).dependent(:destroy) }
   end
 
+  describe "validations" do
+    it { should ensure_inclusion_of(:time_zone).in_array(ActiveSupport::TimeZone.all.map(&:name).sort.uniq) }
+  end
+
   describe "#grouped_stories" do
     it "calls scopes and groups the stories" do
       user = create(:user)
