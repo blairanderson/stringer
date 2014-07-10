@@ -1,24 +1,29 @@
 before_install:
-  - "echo '--colour' > ~/.rspec"
-  - "echo 'gem: --no-document' > ~/.gemrc"
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- echo '--colour' > ~/.rspec
+- 'echo ''gem: --no-document'' > ~/.gemrc'
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
-  - cp .sample.env .env
-  
-  - psql -c 'create database "stingerails_test";' -U postgres
-  
+- cp .sample.env .env
+- psql -c 'create database "stingerails_test";' -U postgres
 branches:
   only:
-    - master
+  - master
 cache:
-  - bundler
+- bundler
 language:
-  - ruby
+- ruby
 notifications:
   email:
-    - false
+  - false
 rvm:
-  - 2.1.2
+- 2.1.2
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
+deploy:
+  provider: heroku
+  api_key:
+    secure: IZDOwARzy9kfhTMpBlfrHJlFEROjFqrXmqdJ4ZQ78hluuVZZ7chu7HU+LtoY1VvlnszQRhEDkRi0zaosDBlW6waQ8mQqJi5fAqMHpKqSpiO5epjm5dXqhVLq4l0FgpMGo0DecOVTTO59KBvU5KZIwAe9WxM9DTV53FYU1VTJCDo=
+  app: stringer
+  on:
+    repo: blairanderson/stringer
