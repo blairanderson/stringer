@@ -1,6 +1,9 @@
 %ul#feed-list
-  %li.feed
+  %li.new-feed
     .row
       .col-xs-12
         = render "form", feed: Feed.new
   = render @feeds
+
+- unless @feeds.present?
+  %h1#add-some-feeds Add A Feed

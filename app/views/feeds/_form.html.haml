@@ -1,6 +1,6 @@
 = simple_form_for feed do |f|
   .row
-    .col-xs-12.col-sm-8
+    .col-xs-12.col-sm-5
       = f.input :url, as: :url, label: false, placeholder: t("feeds.add.fields.feed_url")
-    .col-xs-12.col-sm-4
+    .col-xs-12.col-sm-2
       = f.button :submit, class: "button primary btn-block"

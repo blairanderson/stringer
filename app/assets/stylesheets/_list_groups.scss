@@ -5,15 +5,20 @@ ul#story-list, ul#feed-list {
 }
 
 li.story, li.feed {
+  padding: 10px 30px;
   margin-bottom: 7px;
   background-color: white;
   border-radius: 5px;
   border: 1px solid $navbar-border-bottom;
-  padding: 10px 30px;
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
   transform: rotate(0);
   color: black;
+}
+
+li.new-feed {
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
 
 li.story .story-body a, .setup a, .footer-links a {
