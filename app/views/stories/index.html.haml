@@ -2,7 +2,7 @@
   .row
     .col-xs-12
       %p.lead= date
-    .col-xs-12{id: "stories-#{date.parameterize}"}
+    .col-xs-12
       = render partial: "story", collection: stories
 
 %button.button.primary.btn-lg{"data-target" => "#modal", "data-toggle" => "modal", href: new_message_path}

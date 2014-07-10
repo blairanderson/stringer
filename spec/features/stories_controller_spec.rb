@@ -2,23 +2,23 @@ require "spec_helper"
 
 describe StoriesController do
   let(:feed) { create(:feed) }
-  let(:story_one) { create(:story, feed: feed) }
-  let(:story_two) { create(:story, feed: feed) }
-  let(:stories) { [story_one, story_two] }
+
 
   describe "visit /news" do
 
     before do
+      @story_one = create(:story, feed: feed)
+      @story_two = create(:story, feed: feed)
       @user = create(:user, email: "email@example.com", password: "password")
       @user.feeds << feed
       login_user @user
     end
 
-    it "display list of unread stories" do
+    it "displays list of unread stories" do
       visit stories_path
       expect(page).to have_css(".story", count: 2)
-      expect(page).to have_content(story_one.headline)
-      expect(page).to have_content(story_one.source)
+      expect(page).to have_content(@story_one.lead)
+      expect(page).to have_content(@story_two.lead)
     end
 
     xit "displays all user actions" do

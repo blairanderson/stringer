@@ -9,3 +9,4 @@
       = link_to t('schedule_time.new'), schedule_times_path(schedule), method: :post, class: "button btn-info btn-block"
     .list-group
       = render partial: "time", collection: schedule.schedule_times, locals: {schedule: schedule}
+

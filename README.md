@@ -2,6 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/blairanderson/stringer/badge.png?branch=master)](https://coveralls.io/r/blairanderson/stringer?branch=master)
 [![Build Status](https://travis-ci.org/blairanderson/stringer.svg?branch=master)](https://travis-ci.org/blairanderson/stringer)
+[![Code Climate](https://codeclimate.com/github/blairanderson/stringer.png)](https://codeclimate.com/github/blairanderson/stringer)
 [![Stories in Ready](https://badge.waffle.io/blairanderson/stringer.png?label=ready&title=Ready)](https://waffle.io/blairanderson/stringer)
 
 ## Getting Started
