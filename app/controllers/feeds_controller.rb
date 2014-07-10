@@ -3,7 +3,7 @@ class FeedsController < AccountsController
 
   def index
     @feeds = current_user.feeds
-    FetchFeeds.new(@feeds).fetch_all
+    FetchFeeds.new(@feeds).fetch_all if @feeds.present?
   end
 
   def new
