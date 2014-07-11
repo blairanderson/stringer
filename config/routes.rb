@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :schedules, except: [:show, :edit] do
     resources :schedule_times, except: [:index, :show, :new, :edit], path: "times", as: :times
   end
+  resource :user_time_zone, only: [:edit, :update], path: "user-time-zone"
 end

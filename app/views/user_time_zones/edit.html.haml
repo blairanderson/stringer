@@ -1,0 +1,7 @@
+= simple_form_for @user, url: user_time_zone_path, method: :put do |f|
+  .form-group
+    = f.input :time_zone, as: :time_zone, label: false, input_html: {class: "chosen-select"}
+  .form-actions
+    = f.button :submit, class: "button primary"
+
+#current-user-time-zone{data: {"time-zone" => current_user.time_zone}}
