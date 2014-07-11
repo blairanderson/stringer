@@ -33,3 +33,14 @@ end
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :webkit
 WebMock.disable_net_connect!(allow_localhost: true)
+
+
+def by(message)
+  if block_given?
+    yield
+  else
+    pending message
+  end
+end
+
+alias and_by by

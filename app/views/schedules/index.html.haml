@@ -1,6 +1,8 @@
 %h1 Schedules
 %p.lead
   When would you like tweets tweeted?
-%p.muted Choose your timezone, schedule your times and we'll make sure youre tweeting on time!
+%p.muted
+  =link_to "Choose your timezone,", edit_user_time_zone_path
+  schedule your times and we'll make sure youre tweeting on time!
 
 = render @schedules

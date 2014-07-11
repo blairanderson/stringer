@@ -157,3 +157,5 @@ en:
   schedule:
     time:
       delete: "Remove Time"
+  user:
+    time_zone: "Current TimeZone: %{time_zone}"
