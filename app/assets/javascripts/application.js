@@ -14,12 +14,10 @@
 //= require lodash
 //= require jquery
 //= require jquery_ujs
-//= require thedirt/jquery.theDirt
 //= require bootstrap
 //= require chosen-jquery
 //= require twitter-text
 //= require moment
-//= require alerts
 //= require_tree .
 
 

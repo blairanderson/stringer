@@ -15,7 +15,7 @@ UserTimeZonesController.prototype.edit = function () {
         debugger
         cutzDiv.html("Can we update your timezone to: " + tzid + "?");
         var $button = $("<a>", {text: "YES!", "class": "button primary"})
-        cutzDiv.after($button)
+        cutzDiv.append($button)
     }
 
 };
