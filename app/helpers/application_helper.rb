@@ -8,7 +8,8 @@ module ApplicationHelper
   def flash_to_class(flash)
     # this helps you map flash messages to CSS classes.
     {
-        "notice" => "info"
+        "notice" => "info",
+        "alert" => "warning"
 
     }[flash]
   end
