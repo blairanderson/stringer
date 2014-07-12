@@ -1,4 +1,4 @@
-class SchedulesController < AccountsController
+class SchedulesController < ApplicationController
   before_action :set_schedule, only: [:update]
   before_action :require_day, only: [:update]
 

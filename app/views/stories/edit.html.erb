@@ -1,0 +1,84 @@
+!!!
+%html
+  %head
+    / MISC/META
+    %title ZenPen ~ Minimal Distraction, Maximim Zen
+    %meta{charset: "utf-8"}/
+    %meta{content: "Zenpen - A minimal web based text editor, for the modern man.", name: "description"}/
+    / CSS
+    %link{href: "http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic", rel: "stylesheet", type: "text/css"}/
+    = stylesheet_link_tag(:application)
+    = stylesheet_link_tag("zenpen/css/style.css")
+    = stylesheet_link_tag("zenpen/css/fonts.css")
+    = javascript_include_tag("zenpen/js/libs/head.min.js")
+    = javascript_include_tag("zenpen/js/libs/FileSaver.min.js")
+    = javascript_include_tag("zenpen/js/libs/Blob.js")
+    = javascript_include_tag("zenpen/js/libs/fullScreen.js")
+
+  %body.yin
+    .overlay
+      .wordcount.modal
+        %h1 Target Word Count
+        %div
+          %input{min: "0", name: "quantity", type: "number", value: "0"}/
+      .description.modal
+        %h1 About ZenPen
+
+      .saveoverlay.modal
+        %h1 Select save format
+        %p.saveselection
+          %span{"data-format" => "markdown"} Markdown
+          %span{"data-format" => "html"} HTML
+          %span{"data-format" => "plain"} Plain Text
+        %button.savebutton.useicons &#57350;
+        %div Or select format and press ctrl+c (cmd+c on mac) to copy the text.
+        %textarea.hiddentextbox
+    .text-options
+      .options
+        %span.no-overflow
+          %span.lengthen.ui-inputs
+            %button.url.useicons &#57349;
+            %input.url-input{placeholder: "Type or Paste URL here", type: "text"}/
+            %button.bold b
+            %button.italic i
+            %button.quote &#8221;
+    .ui
+      .wrapper
+        .top.editing
+          %button.fullscreen.useicons{title: "Toggle fullscreen"}
+            \&#57344;
+          %button.color-flip.useicons{title: "Invert colors"}
+            \&#57346;
+          %button.target.useicons{title: "Set target word count"}
+            \&#57345;
+          %button.save.useicons{title: "Save Text"}
+            \&#57347;
+        .bottom
+          %button.about
+            ?
+    .word-counter
+      %span.progress
+    %section
+      %article.content{contenteditable: "true"}
+        %p
+          A minimalist writing zone, where you can block out all distractions and get to what's important. The writing!
+      = simple_form_for @message do |f|
+        = f.input :content, as: :hidden
+        = f.button :submit, class: "button primary"
+
+    / JS
+    :javascript
+      // Load required scripts.
+      debugger
+      head.js(
+          "#{asset_path("zenpen/js/utils.js")}",
+          "#{asset_path("zenpen/js/ui.js")}",
+          "#{asset_path("zenpen/js/editor.js")}",
+          function(){
+              // Initiate ZenPen
+              editor.init();
+              ui.init();
+          }
+      );
+
+

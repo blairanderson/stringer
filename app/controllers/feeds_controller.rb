@@ -1,4 +1,4 @@
-class FeedsController < AccountsController
+class FeedsController < ApplicationController
   before_action :set_feed, only: [:show]
 
   def index

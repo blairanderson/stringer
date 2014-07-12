@@ -1,4 +1,4 @@
-class ScheduleTimesController < AccountsController
+class ScheduleTimesController < ApplicationController
   before_action :set_schedule
   before_action :set_time, only: [:update, :destroy]
 

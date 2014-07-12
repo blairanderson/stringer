@@ -22,7 +22,7 @@ describe StoriesController do
     end
 
     xit "displays all user actions" do
-      visit "/news"
+      visit stories_path
 
       expect(page).to have_tag("#mark-all")
       expect(page).to have_tag("#refresh")
@@ -31,35 +31,10 @@ describe StoriesController do
     end
 
     xit "should have correct footer links" do
-      visit "/news"
+      visit stories_path
 
-      page = last_response.body
-      page.should have_tag("a", with: { href: "/feeds/export"})
-      page.should have_tag("a", with: { href: "/logout"})
-      page.should have_tag("a", with: { href: "https://github.com/swanson/stringer"})
-    end
-
-    xit "displays a zen-like message when there are no unread stories" do
-      Story.stub(:unread).and_return([])
-
-      visit "/news"
-
-      expect(page).to have_tag("#zen")
-    end
-  end
-
-  describe "visit /archive" do
-    let(:read_one) { create(:story, is_read: true) }
-    let(:read_two) { create(:story, is_read: true) }
-    let(:stories) { [read_one, read_two].paginate }
-    before { Story.stub(:read).and_return(stories) }
-
-    xit "displays the list of read stories with pagination" do
-      visit "/archive"
-
-      page = last_response.body
-      page.should have_tag("#stories")
-      page.should have_tag("div#pagination")
+      expect(page).to have_tag("a", with: { href: "/logout"})
+      expect(page).to have_tag("a", with: { href: "https://waffle.io/blairanderson/stringer"})
     end
   end
 
@@ -78,16 +53,21 @@ describe StoriesController do
     end
   end
 
-  describe "visit /stories/:id" do
-    before { Story.stub(:fetch).and_return(story_one) }
+  describe "visit /stories/:id/edit" do
+    let(:user){ create(:user) }
+    let(:story_one) { create(:story) }
+
+    before do
+      login_user user
+      user.stub(:stories).and_return([story_one])
+    end
     context "is_read parameter" do
       context "when it is not malformed" do
-        xit "marks a story as read" do
-          Story.should_receive(:save).once
-
-          visit "/stories/#{story_one.id}", {is_read: true}.to_json
-
-          story_one.is_read.should eq true
+        it "marks a story as read" do
+          visit stories_path(story_one)
+          within(".new_message") do
+            expect(page).to have_content story.headline
+          end
         end
       end
 

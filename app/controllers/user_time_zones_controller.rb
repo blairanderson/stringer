@@ -1,4 +1,4 @@
-class UserTimeZonesController < AccountsController
+class UserTimeZonesController < ApplicationController
   def edit
     @user = current_user
   end

@@ -1,4 +1,4 @@
-class WelcomeController < ApplicationController
+class WelcomeController < PublicController
   def index
     if current_user
       redirect_to stories_path
