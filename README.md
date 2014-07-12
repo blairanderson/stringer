@@ -32,16 +32,16 @@ https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-c
 to install QT
 
 
-2) You will need to generate a secret key using 
+2) You may need to generate a secret key using 
     
     $rake secret
     
-Create a .env file and insert the generated key into it
+Insert the generated key into the .env file
 
     SECRET_KEY_BASE= <your generated secret key>
     
 
-Devise also requires a secret key and if you fail to set it you wil be 
+Devise may also require a secret key and if you fail to set it you wil be 
 
 prompted to do so when running the rails server for the first time.  
 
