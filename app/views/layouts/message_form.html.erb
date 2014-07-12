@@ -25,6 +25,19 @@
 </head>
 
 <body class="yin">
+
+  <div class="row" id="hidden-form">
+    <div class="col-xs-10 col-sm-8 col-md-4 center-block" style="float: none;">
+      <%= simple_form_for @message do |f| %>
+        <%= f.input :content, label: false, :input_html => {rows: 10, class: "form-control"} %>
+        <div class="actions">
+          <%= f.button :submit, class: "button primary" %>
+          <button class="button nolink length"><%= 140 - @message.content.to_s.length %></button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
 <div class="overlay">
   <div class="wordcount modal">
     <h1>Target Word Count</h1>
@@ -107,19 +120,6 @@
     <%= @message.content %>
   </article>
 
-</section>
-<section>
-  <div class="row" id="hidden-form">
-    <div class="col-xs-12">
-      <%= simple_form_for @message do |f| %>
-        <%= f.input :content, label: false, :input_html => {rows: 10, class: "form-control"} %>
-        <div class="actions">
-          <%= f.button :submit, class: "button primary" %>
-          <button class="button nolink length"><%= 140 - @message.content.to_s.length %></button>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </section>
 
 
