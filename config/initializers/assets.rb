@@ -4,14 +4,14 @@ Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'compo
 Rails.application.config.assets.precompile += %w( landing.css )
 # Zenpen Assets.
 Rails.application.config.assets.precompile += %w(
-  zenpen/css/style.css
-  zenpen/css/fonts.css
-  zenpen/js/libs/Blob.js
-  zenpen/js/libs/FileSaver.min.js
-  zenpen/js/libs/fullScreen.js
-  zenpen/js/libs/head.min.js
-  zenpen/js/editor.js
-  zenpen/js/ui.js
-  zenpen/js/utils.js
+  writer/css/style.css
+  writer/css/fonts.css
+  writer/js/libs/Blob.js
+  writer/js/libs/FileSaver.min.js
+  writer/js/libs/fullScreen.js
+  writer/js/libs/head.min.js
+  writer/js/editor.js
+  writer/js/ui.js
+  writer/js/utils.js
 )
 
