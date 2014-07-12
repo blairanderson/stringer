@@ -39,7 +39,7 @@ describe FeedsController do
       visit new_feed_path
       fill_in "Feed URL", with: feed_url
       click_on "Create Feed"
-      expect(page).to have_content t('models.feed.created')
+      expect(page).to have_content t('feeds.add.flash.added_successfully')
     end
 
     let(:invalid_feed_url) { "http://not-a-valid-feed.com/" }
@@ -48,7 +48,7 @@ describe FeedsController do
       fill_in "Feed URL", with: invalid_feed_url
       click_on "Create Feed"
 
-      expect(page).to have_content t('models.not_found')
+      expect(page).to have_content t('feeds.add.flash.feed_not_found_error')
     end
 
     describe "when the user already subscribes" do
@@ -59,13 +59,13 @@ describe FeedsController do
         fill_in "Feed URL", with: feed_url
         click_on "Create Feed"
 
-        expect(page).to have_content t('models.feed.created')
+        expect(page).to have_content t('feeds.add.flash.added_successfully')
 
         visit new_feed_path
         fill_in "Feed URL", with: feed_url
         click_on "Create Feed"
 
-        expect(page).to have_content t('models.feed.exists')
+        expect(page).to have_content t('feeds.add.flash.already_subscribed_error')
       end
     end
   end

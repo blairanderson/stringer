@@ -14,15 +14,15 @@ class FeedsController < ApplicationController
     @feed = Feed.add(feed_params)
 
     if @feed && current_user.feeds.include?(@feed)
-      flash[:notice] = t('models.feed.exists')
+      flash[:notice] = t('feeds.add.flash.already_subscribed_error')
       redirect_to_feed
     elsif @feed
       current_user.feeds << @feed
-      flash[:notice] = t('models.feed.created')
+      flash[:notice] = t('feeds.add.flash.added_successfully')
       redirect_to_feed
     else
       @feed = Feed.new
-      flash[:error] = t('models.not_found')
+      flash[:error] = t('feeds.add.flash.feed_not_found_error')
       render :new
     end
   end

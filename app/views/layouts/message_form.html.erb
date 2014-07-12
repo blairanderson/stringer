@@ -54,7 +54,7 @@
     <textarea class='hiddentextbox'></textarea>
   </div>
 </div>
-<div class="text-options">
+<div class="text-options" style="display:none;">
   <div class="options">
 				<span class="no-overflow">
 					<span class="lengthen ui-inputs">
@@ -98,7 +98,7 @@
 <div class="word-counter">
   <span class="progress"></span>
 </div>
-<section>
+<section style="display: none;">
   <header class="header">
     This is a Tweed!
   </header>
@@ -112,10 +112,10 @@
   <div class="row" id="hidden-form">
     <div class="col-xs-12">
       <%= simple_form_for @message do |f| %>
-        <%= f.input :content, as: :hidden %>
+        <%= f.input :content, label: false, :input_html => {rows: 10, class: "form-control"} %>
         <div class="actions">
-	          <%= f.button :submit, class: "button primary" %>
-            <button class="button nolink length"><%= @message.content.length - 140 %></button>
+          <%= f.button :submit, class: "button primary" %>
+          <button class="button nolink length"><%= 140 - @message.content.to_s.length %></button>
         </div>
       <% end %>
     </div>

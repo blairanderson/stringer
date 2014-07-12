@@ -6,18 +6,19 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
+    @message = Message.new(content: "Here is an example tweet! http://type-a-url-and-it-becomes-a-link.com - delete me and get started")
+    render layout: "message_form", template: "messages/edit"
   end
 
   def edit
-    render layout: "message_form"
+    render layout: "message_form", template: "messages/edit"
   end
 
   def create
     @message = current_user.messages.build(message_params)
 
     if @message.save
-      redirect_to messages_path, notice: 'Message was successfully created.'
+      redirect_to messages_path, notice: t('message.create.success')
     else
       render :new
     end
@@ -25,7 +26,7 @@ class MessagesController < ApplicationController
 
   def update
     if @message.update(message_params)
-      redirect_to @message, notice: 'Message was successfully updated.'
+      redirect_to messages_path, notice: t('message.update.success')
     else
       render :edit
     end
@@ -33,7 +34,7 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
-    redirect_to messages_url, notice: 'Message was successfully destroyed.'
+    redirect_to messages_url, notice: t('message.destroy.success')
   end
 
   private
