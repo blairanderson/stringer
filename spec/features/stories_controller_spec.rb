@@ -62,8 +62,8 @@ describe StoriesController do
       user.stub(:stories).and_return([story_one])
     end
     it "works as a form!" do
-      visit edit_stories_path(story_one)
-      expect(page).to have_content story_one.body
+      visit edit_story_path(story_one)
+      expect(page).to have_content story_one.entry_id
     end
   end
 

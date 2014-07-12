@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def edit
+    render layout: "message_form"
   end
 
   def create
