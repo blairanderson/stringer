@@ -1,14 +1,8 @@
-.col-xs-12.col-lg-10
-  .panel.panel-default
-    .panel-heading
-      .row
-        .col-xs-12
-          %strong= @story.lead
-      .panel-body
-        %p.lead
-          = @story.body.html_safe
-      .panel-footer
-        .row
-          = link_to "Return to stories", stories_path, class: "button primary", id:"return-to-stories"
-          = link_to "Tweed It!", edit_story_path(@story), class: "button primary"
+.row
+  .col-xs-12
+    %h2= @story.lead
+    %p= @story.body.html_safe
+.row.panel-footer
+  = link_to "Return to stories", stories_path, class: "button primary pull-right"
+  = link_to "Tweed It!", edit_story_path(@story), class: "button primary"
 
