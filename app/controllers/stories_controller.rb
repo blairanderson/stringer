@@ -3,6 +3,10 @@ class StoriesController < ApplicationController
     @stories = current_user.grouped_stories
   end
 
+  def show
+    @story = Story.find(params[:id])
+  end
+
   def edit
     story = Story.find(params[:id])
     content = [

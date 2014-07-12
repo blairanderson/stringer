@@ -11,7 +11,7 @@
       .panel-heading
         .row
           .col-xs-12
-            %strong= story.lead
+            %strong= link_to story.lead, story_path(story)
       .panel-body
         %p.lead
           = story.body.html_safe
