@@ -10,11 +10,12 @@
 
   <!-- CSS -->
   <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag :application %>
   <link href="/zenpen/css/style.css" rel="stylesheet">
   <link href="/zenpen/css/fonts.css" rel="stylesheet">
 
   <!-- LIBS -->
-	<%= javascript_include_tag :application %>
+  <%= javascript_include_tag :application %>
   <script src="/zenpen/js/libs/head.min.js"></script>
   <script src="/zenpen/js/libs/FileSaver.min.js"></script>
   <script src="/zenpen/js/libs/Blob.js"></script>
@@ -28,25 +29,29 @@
 <div class="overlay">
   <div class="wordcount modal">
     <h1>Target Word Count</h1>
+
     <div>
-      <input type="number" name="quantity" value="0" min="0"></input>
+      <input type="number" name="quantity" value="25" min="0"></input>
     </div>
   </div>
 
   <div class="description modal">
-    <h1> About ZenPen </h1>
-    <p>  Zenpen is a minimalist writing zone by <a href="http://tholman.com">Tim Holman</a> (<a href="http://twitter.com/twholman">@twholman</a>), to get you into that zone, where you can focus on the writing - with none of the distractions. ZenPen is open source on <a href="http://github.com/tholman/zenpen">Github</a> (with many improvements on the way!). If you have any questions, hit me up via <a href="mailto:timothy.w.holman@gmail.com">email</a> - ooh, you can follow me on twitter for updates too: <a href="http://twitter.com/twholman">@twholman</a> </p>
+    <h1> About Tweed </h1>
+
+    <p><a href="http://blairanderson.co">Blair Anderson</a>
+      (<a href="http://twitter.com/blairanderson">@blairanderson</a>)</p>
   </div>
 
   <div class="saveoverlay modal">
     <h1>Select save format</h1>
+
     <p class='saveselection'>
       <span data-format='markdown'>Markdown</span>
       <span data-format='html'>HTML</span>
       <span data-format='plain'>Plain Text</span>
     </p>
     <button class='savebutton useicons'>&#xe006;</button>
-    <div> Or select format and press ctrl+c (cmd+c on mac) to copy the text. </div>
+    <div> Or select format and press ctrl+c (cmd+c on mac) to copy the text.</div>
     <textarea class='hiddentextbox'></textarea>
   </div>
 </div>
@@ -100,27 +105,49 @@
   </header>
 
   <article contenteditable="true" class="content">
-      <%= @message.content %>
+    <%= @message.content %>
   </article>
 
 </section>
+<section>
+  <div class="row" id="hidden-form">
+    <div class="col-xs-12">
+      <%= simple_form_for @message do |f| %>
+        <%= f.input :content, as: :hidden %>
+        <div class="actions">
+	          <%= f.button :submit, class: "button primary" %>
+            <button class="button nolink length"><%= @message.content.length - 140 %></button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
 
-<%= simple_form_for @message do |f| %>
-	<%= f.input :content, as: :hidden %>
-	<%= f.button :submit %>
-<% end %>
+
 <!-- JS -->
 <script type="text/javascript">
-	$(document).on('page:restore', function(){
+	$(document).on('page:restore', function () {
 		// Manually evaluates the appended script tag.
 		Paloma.executeHook();
+		head.js(
+			"/zenpen/js/utils.js",
+			"/zenpen/js/ui.js",
+			"/zenpen/js/editor.js",
+			function () {
+
+				// Initiate ZenPen
+				editor.init();
+				ui.init();
+			}
+		);
+
 	});
 	// Load required scripts.
 	head.js(
 		"/zenpen/js/utils.js",
 		"/zenpen/js/ui.js",
 		"/zenpen/js/editor.js",
-		function(){
+		function () {
 
 			// Initiate ZenPen
 			editor.init();
