@@ -1,19 +1,14 @@
 // Bitters v0.10.0
 // http://bitters.bourbon.io
-
 // Variables
 @import 'variables';
-
 // Neat Settings -- uncomment if using Neat -- must be imported before Neat
 // @import 'grid-settings';
-
 // Mixins
 @import 'mixins/flash';
-
 // Extends
 @import 'extends/clearfix';
 @import 'extends/hide-text';
-
 // Typography and Elements
 @import 'typography';
 @import 'forms';
@@ -21,3 +16,30 @@
 @import 'lists';
 @import 'flashes';
 @import 'buttons';
+
+.fade-in {
+  opacity: 0;
+  -webkit-transition: opacity 1s linear;
+  -moz-transition:    opacity 1s linear;
+  -o-transition:      opacity 1s linear;
+  -ms-transition:     opacity 1s linear;
+  transition:         opacity 1s linear;
+  -webkit-transition: all opacity 1s;
+  -moz-transition:    all opacity 1s;
+  -o-transition:      all opacity 1s;
+  transition:        all opacity 1s;
+}
+
+.visible {
+  opacity: 1 !important;
+  -webkit-transition: opacity 1s linear;
+  -moz-transition:    opacity 1s linear;
+  -o-transition:      opacity 1s linear;
+  -ms-transition:     opacity 1s linear;
+  transition:         opacity 1s linear;
+  -webkit-transition: all opacity 1s;
+  -moz-transition:    all opacity 1s;
+  -o-transition:      all opacity 1s;
+  transition:         all opacity 1s;
+}
+

@@ -21,9 +21,15 @@
 //= require_tree .
 
 
+var work = function makeVisible(){
+    $('.fade-in').addClass('visible')
+};
+
 $(document).on('page:restore', function () {
     // Manually evaluates the appended script tag.
     Paloma.executeHook();
+    work()
+
 });
 
-$(document).ready(function () {});
+$(document).ready(work);
