@@ -97,4 +97,20 @@ describe StoriesController do
       expect(page).to have_tag('li', :class => 'unread')
     end
   end
+
+  describe "visit /news/:id" do
+    before do
+      @story_one = create(:story, feed: feed)
+      @story_two = create(:story, feed: feed)
+      @user = create(:user, email: "email@example.com", password: "password")
+      @user.feeds << feed
+      login_user @user
+    end
+    it "allows the user to click title to see full article" do
+      visit stories_path
+      click_link @story_one.lead
+      expect(page).to have_content @story_one.body
+      expect(page).to have_content @story_one.lead
+    end
+  end
 end

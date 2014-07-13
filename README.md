@@ -21,6 +21,7 @@ __Make Sure PostGreSQL is running!__
 After setting up, you can run the application using [foreman](http://ddollar.github.io/foreman/):
 
     $ foreman start
+    
 
 ## Guidelines
 

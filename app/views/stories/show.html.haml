@@ -1,0 +1,8 @@
+.row
+  .col-xs-12
+    %h2= @story.lead
+    %p= @story.body.html_safe
+.row.panel-footer
+  = link_to "Return to stories", stories_path, class: "button primary pull-right"
+  = link_to "Tweed It!", edit_story_path(@story), class: "button primary"
+
