@@ -4,10 +4,9 @@
       .panel-heading
         .row
           .col-xs-12
-            %strong= link_to story.lead, story_path(story)
-      .panel-body
-        %p.lead.truncate
-          = story.body.html_safe
+            %p.panel-title= link_to story.lead, story_path(story), class: "toggle-panel-body"
+      .panel-body.truncate{data: {href: story_path(story)}}
+        = story.body.html_safe
       .panel-footer
         = link_to "Tweed It!", edit_story_path(story), class: "button primary"
         = link_to "Full Article", story_path(story), class: "button primary pull-right"
