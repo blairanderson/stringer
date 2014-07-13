@@ -1,6 +1,8 @@
-- @stories.each do |date, stories|
-  .row
-    .col-xs-12
-      %p.lead= date
-    .col-xs-12
-      = render partial: "story", collection: stories
+.col-xs-12
+  - @stories.each do |date, stories|
+    .row
+      .col-xs-12
+        %p.lead= date
+    .row
+      .col-xs-12
+        = render partial: "story", collection: stories

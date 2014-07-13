@@ -1,24 +1,14 @@
 = div_for story do
-  .col-xs-12.col-lg-2
-    .col-xs-6.col-lg-12
-      .form-group
-        %a.button.primary.btn-block Remove?
-    .col-xs-6.col-lg-12
-      .form-group
-        %a.button.primary.btn-block Favorite?
-  .col-xs-12.col-lg-10
-    .panel.panel-default
-      .panel-heading
-        .row
-          .col-xs-12
-            %strong= link_to story.lead, story_path(story)
-      .panel-body
-        %p.lead
-          = story.body.truncate(1000).html_safe
-      .panel-footer
-        .row
-          .col-xs-12.col-sm-12.col-md-12.col-lg-12
-            = link_to "Tweed It!", edit_story_path(story), class: "button primary"
-            = link_to "Full Article", story_path(story), class: "button primary pull-right"
-
-
+  .panel.panel-default
+    .panel-heading
+      .row
+        .col-xs-12
+          %strong= link_to story.lead, story_path(story)
+    .panel-body
+      %p.lead
+        = story.body.truncate(1000).html_safe
+    .panel-footer
+      .row
+        .col-xs-12
+          = link_to "Tweed It!", edit_story_path(story), class: "button primary"
+          = link_to "Full Article", story_path(story), class: "button primary pull-right"
