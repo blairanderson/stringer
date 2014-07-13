@@ -1,14 +1,13 @@
-= div_for story do
-  .panel.panel-default
-    .panel-heading
-      .row
-        .col-xs-12
-          %strong= link_to story.lead, story_path(story)
-    .panel-body
-      %p.lead
-        = story.body.truncate(1000).html_safe
-    .panel-footer
-      .row
-        .col-xs-12
-          = link_to "Tweed It!", edit_story_path(story), class: "button primary"
-          = link_to "Full Article", story_path(story), class: "button primary pull-right"
+= div_for story, class: "row" do
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading
+        .row
+          .col-xs-12
+            %strong= link_to story.lead, story_path(story)
+      .panel-body
+        %p.lead.truncate
+          = story.body.html_safe
+      .panel-footer
+        = link_to "Tweed It!", edit_story_path(story), class: "button primary"
+        = link_to "Full Article", story_path(story), class: "button primary pull-right"

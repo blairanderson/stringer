@@ -18,7 +18,9 @@
           .row
             = render partial: "application/content_navigation"
           .row
-            = render partial: "flashes"
-          .row
-            = yield
+            .col-xs-12
+              = render partial: "flashes"
+          .row.fade-in
+            .col-xs-12
+              = yield
     = render 'javascript'
