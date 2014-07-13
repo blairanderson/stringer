@@ -12,7 +12,7 @@ class StoriesController < ApplicationController
     content = [
         story.strip_html(story.title)," - ",
         story.entry_id," - ",
-        story.strip_html(story.body)
+        story.strip_html(story.body).truncate(50)
     ].join("").html_safe
     @message = current_user.messages.build(content: content)
     render layout: "message_form"
