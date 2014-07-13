@@ -11,6 +11,7 @@ MessageForm.prototype.init = function () {
     this.$formInput.hide()
 
     this.textLinker();
+    this.textCounter();
 
     this.bindEvents()
 };
@@ -37,7 +38,7 @@ MessageForm.prototype.textLinker = function () {
     this.$el.html(autoLinked);
 };
 
-MessageForm.prototype.throttledTextLinker = _.debounce(MessageForm.prototype.textLinker, 2000);
+MessageForm.prototype.throttledTextLinker = _.debounce(MessageForm.prototype.textLinker, 10000);
 
 MessageForm.prototype.textCounter = function () {
     var length = twttr.txt.getTweetLength(this.$el.text());

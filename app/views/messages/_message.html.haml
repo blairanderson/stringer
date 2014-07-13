@@ -1,7 +1,6 @@
-.panel.panel-default
+= div_for message, class: "panel panel-default" do
   .panel-body
-    %p.lead
-      = message.content
+    %p.lead= message.content
     %p= "Created: #{time_ago_in_words message.created_at} ago"
   .panel-footer
     = link_to 'Edit', edit_message_path(message), class: "btn btn-warning"

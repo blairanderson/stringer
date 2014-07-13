@@ -5,10 +5,9 @@ var StoriesController = Paloma.controller('Stories');
 
 StoriesController.prototype.index = function () {
     $('.truncate').hide();
-    $('.toggle-panel-body').on("click", function(e){
+    $('.toggle-panel-body').on("click", function (e) {
         e.preventDefault();
-        var $this = $(this);
-        target = $this.attr("href");
+        var target = $(this).attr("href");
         $("[data-href='" + target + "']").slideToggle();
     });
 };
