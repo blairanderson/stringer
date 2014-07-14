@@ -14,7 +14,7 @@ class Story < ActiveRecord::Base
   end
 
   def lead
-    strip_html(self.body)[0,100]
+    strip_html(self.body)[0,200]
   end
 
   def source

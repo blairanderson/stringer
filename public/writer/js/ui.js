@@ -10,7 +10,7 @@ var ui = (function() {
 	var wordCountValue, wordCountBox, wordCountElement, wordCounter, wordCounterProgress;
 	
 	//save support
-	var supportSave, saveFormat, textToWrite;
+	var supportsSave, saveFormat, textToWrite;
 	
 	var expandScreenIcon = '&#xe000;';
 	var shrinkScreenIcon = '&#xe004;';

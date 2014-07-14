@@ -1,6 +1,6 @@
 class Schedule < ActiveRecord::Base
   belongs_to :user
-  has_many :schedule_times
+  has_many :schedule_times, -> { order(time: :asc) }, dependent: :destroy
 
   DAYS = [
       :monday,
@@ -9,7 +9,8 @@ class Schedule < ActiveRecord::Base
       :thursday,
       :friday,
       :saturday,
-      :sunday]
+      :sunday
+  ].freeze
 
   DAYS.each do |day|
     as_enum day, [:active, :inactive]

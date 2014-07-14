@@ -10,9 +10,8 @@ class StoriesController < ApplicationController
   def edit
     story = Story.find(params[:id])
     content = [
-        story.strip_html(story.title)," - ",
         story.entry_id," - ",
-        story.strip_html(story.body).truncate(50)
+        story.strip_html(story.title)
     ].join("").html_safe
     @message = current_user.messages.build(content: content)
     render layout: "message_form"

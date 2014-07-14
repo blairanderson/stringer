@@ -2,9 +2,9 @@
   .col-xs-12
     .panel.panel-default
       .panel-heading
-        .row
-          .col-xs-12
-            %p.panel-title= link_to story.lead, story_path(story), class: "toggle-panel-body"
+        = link_to story.title, story_path(story), class: "toggle-panel-body"
+        %p.panel-title
+          = link_to story.lead, story_path(story), class: "toggle-panel-body"
       .panel-body.truncate{data: {href: story_path(story)}}
         = story.body.html_safe
       .panel-footer
