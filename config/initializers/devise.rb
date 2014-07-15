@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'c6834b83afe068edb38d84ac9e83807d4b51d4c8e325278c0f075bee83fb9166cf0e0bae099f0e6be6c96394303337baa740e8ab4df7154a05182a75458cfbeb'
+  config.secret_key = 'c6834b83afe068edb38d84ac9e83807d4b51d4c8e325278c0f075bee83fb9166cf0e0bae099f0e6be6c96394303337baa740e8ab4df7154a05182a75458cfbeb'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -105,7 +105,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming their account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming their account.
-  # config.allow_unconfirmed_access_for = 2.days
+  config.allow_unconfirmed_access_for = 5.days
 
   # A period that the user is allowed to confirm their account before their
   # token becomes invalid. For example, if set to 3.days, the user can confirm

@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'airbrake'
 gem 'bourbon', '~> 3.2.1'
 gem 'bootstrap-sass', git: 'https://github.com/blairanderson/bootstrap-sass.git'
 gem 'chosen-rails'

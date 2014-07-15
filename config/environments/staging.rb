@@ -5,7 +5,5 @@ Mail.register_interceptor(
 )
 
 Rails.application.configure do
-  # ...
-
   config.action_mailer.default_url_options = { host: 'staging.stingerails.com' }
 end

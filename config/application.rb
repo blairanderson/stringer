@@ -31,8 +31,7 @@ module Stingerails
 
     #https://github.com/plataformatec/devise/wiki/How-To:-Create-custom-layouts#define-in-config
     config.to_prepare do
-      Devise::SessionsController.layout "landing"
-      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "landing" }
+      DeviseController.layout proc{ |controller| user_signed_in? ? "application" : "landing" }
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
