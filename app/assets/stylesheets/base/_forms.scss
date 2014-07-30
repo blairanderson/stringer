@@ -14,7 +14,6 @@ textarea {
 .disabled {
   input[type="submit"] {
     @extend .disabled;
-    @extend .mute;
   }
 }
 

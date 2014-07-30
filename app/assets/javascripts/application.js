@@ -21,8 +21,22 @@
 //= require_tree .
 
 
-var work = function makeVisible(){
+var Spinner = {
+    el: function(){
+        return "<div class='spinner'>" +
+            "<div class='bounce1'></div>" +
+            "<div class='bounce2'></div>" +
+            "<div class='bounce3'></div>" +
+            "</div>";
+    },
+    show: function () {
+        $(this.el()).insertBefore("#content-container");
+    }
+};
+
+var work = function makeVisible() {
     $('.fade-in').addClass('visible')
+    $('.spinner').remove();
 };
 
 $(document).on('page:restore', function () {
