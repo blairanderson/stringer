@@ -301,7 +301,6 @@ DEPENDENCIES
   airbrake
   awesome_print
   bootstrap-sass!
-  bourbon (~> 3.2.1)
   capybara-webkit (>= 1.0.0)
   chosen-rails
   coffee-rails
