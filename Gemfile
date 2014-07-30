@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 gem 'airbrake'
+gem 'bloggy', git: 'https://github.com/blairanderson/bloggy.git'
 gem 'bootstrap-sass', git: 'https://github.com/blairanderson/bootstrap-sass.git'
 gem 'chosen-rails'
 gem 'coffee-rails'
