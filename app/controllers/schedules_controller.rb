@@ -12,8 +12,8 @@ class SchedulesController < ApplicationController
   end
 
   def update
-    @schedule.toggle_day(@day)
-    redirect_to schedules_path
+    status = @schedule.toggle_day(@day) ? 200 : 400
+    render json: @schedule, status: status
   end
 
 private

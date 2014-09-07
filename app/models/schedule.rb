@@ -22,4 +22,16 @@ class Schedule < ActiveRecord::Base
     new_day_state = day_state == :active ? :inactive : :active
     self.update_attribute(day, new_day_state)
   end
+
+  def checked?(day)
+    self.send(day) == :active ? "checked" : nil
+  end
+
+  def activate(day)
+    self.update_attribute(day, :active)
+  end
+
+  def inactivate(day)
+    self.update_attribute(day, :inactive)
+  end
 end

@@ -2,8 +2,12 @@
   .col-xs-12.col-sm-3
     .btn-group-vertical.btn-block
       - Schedule::DAYS.each do |day|
-        = link_to day.to_s, schedule_path(schedule, toggle: day), method: :patch, class: "button #{schedule.send(day) == :active ? 'primary' : 'default'}"
-    %p.lead= link_to "Possibly change these buttons to switches.", "http://goratchet.com/components/"
+        .ios-toggle-container
+          .toggle
+            %input.check{checked: schedule.checked?(day), type: "checkbox", data: {day: day.to_s, path: schedule_path(schedule, toggle: day)}}
+            %b.b.switch
+            %b.b.track
+          .day= day.to_s
   .col-xs-12.col-sm-6
     .list-group
       = link_to t('schedule_time.new'), schedule_times_path(schedule), method: :post, class: "button btn-info btn-block"
