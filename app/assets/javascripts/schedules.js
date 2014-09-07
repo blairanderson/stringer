@@ -7,30 +7,41 @@ var SchedulesController = Paloma.controller('Schedules');
 
 //http://codepen.io/daneden/pen/JFxAw
 
-SchedulesController.prototype.index = function () {
-//  $('form').theDirt()
-  $('input[type="checkbox"]').on('change', function (e) {
-      e.preventDefault()
-      var $this = $(this);
-      var url = $this.data('path');
-      var day = $this.data('day');
-      url += this.checked ? "&active=true" : "&active=false";
-
-      $.ajax({
-        type: "POST",
-        url: url,
-        data:  {_method:'PUT', schedule: {active: this.checked, toggle: day}},
-        dataType: 'json',
-        success: function (msg) {
-          debugger
-        },
-        error: function(msg){
-          debugger
-          // untoggle the item
-        }
-      });
-    }
-  )
-  ;
+function post(args) {
+  return $.ajax({
+    type: "POST",
+    url: args.url,
+    data: args.data,
+    dataType: 'json'
+  });
 }
-;
+
+SchedulesController.prototype.index = function () {
+  $('input[type="checkbox"]').on('change', function (e) {
+    e.preventDefault();
+
+    var $this = $(this),
+      url = $this.data('path'),
+      day = $this.data('day');
+
+    post({
+      url: url,
+      data: {_method: 'PUT', schedule: {active: this.checked, toggle: day}}
+    });
+  });
+
+  $('select.time').on('change', function (e) {
+    var $form = $(this.form);
+
+    var attrs = {};
+    $form.serializeArray().forEach(function (el) {
+      attrs[el.name] = el.value;
+    });
+
+    console.log("attrs", attrs);
+
+    $form.submit();
+
+    // TODO: convert the dates to UTC before submitting... 
+  });
+};
