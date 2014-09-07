@@ -2,7 +2,7 @@ require 'rubygems'
 require 'optparse'
 require 'yaml'
 
-desc "create new post with textmate"
+desc "create new post with rubymine"
 task :np do
   OptionParser.new.parse!
   ARGV.shift
@@ -20,7 +20,7 @@ task :np do
     end
 
     begin
-      config = {'editor' => 'mate'}
+      config = {'editor' => 'mine'}
       if File.exist?("#{home_dir}/.bloggyrc")
         config.merge!(YAML.load_file("#{home_dir}/.bloggyrc"))
       end
