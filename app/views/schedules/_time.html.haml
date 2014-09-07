@@ -1,7 +1,7 @@
 .list-group-item
   .row
     .col-xs-12
-      = simple_form_for time, url: schedule_time_path(schedule, time), html: {class: "form-inline"} do |f|
+      = simple_form_for time, url: schedule_time_path(schedule, time), data: {remote: true},  html: {class: "form-inline"} do |f|
         .form-group
           = f.input :time, ampm: true, required: false
         = link_to t('schedule.time.delete'), schedule_time_path(schedule, time), method: :delete

@@ -14,7 +14,7 @@
   }
 
   .day {
-    text-transform:capitalize;
+    text-transform: capitalize;
     top: -5px;
     position: absolute;
     margin-left: 50px;
@@ -29,7 +29,7 @@
     background-color: #ddd;
     margin: 0;
     overflow: hidden;
-    box-shadow: inset 0 0 2px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 0 2px 1px rgba(0, 0, 0, .05);
   }
 
   .check {
@@ -68,7 +68,7 @@
     transition: .25s cubic-bezier(0.785, 0.135, 0.150, 0.860);
     transition-property: left, right;
     transition-delay: 0s, 0s;
-    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   }
 
   .track {
@@ -78,7 +78,7 @@
     right: 0;
     bottom: 0;
     transition: .25s cubic-bezier(0.785, 0.135, 0.150, 0.860);
-    box-shadow: inset 0 0 0 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .05);
     border-radius: 40px;
   }
 }

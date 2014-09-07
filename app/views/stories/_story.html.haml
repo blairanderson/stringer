@@ -9,4 +9,4 @@
         = story.body.html_safe
       .panel-footer
         = link_to "Tweed It!", edit_story_path(story), class: "button primary"
-        = link_to "Full Article", story_path(story), class: "button primary pull-right"
+        = link_to "Full Article", story.permalink, target: "_blank", class: "button primary pull-right"

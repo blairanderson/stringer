@@ -7,7 +7,7 @@
             %input.check{checked: schedule.checked?(day), type: "checkbox", data: {day: day.to_s, path: schedule_path(schedule, toggle: day)}}
             %b.b.switch
             %b.b.track
-          .day= day.to_s
+          .day{data: {day: day.to_s, schedule: schedule.id}}= day.to_s
   .col-xs-12.col-sm-6
     .list-group
       = link_to t('schedule_time.new'), schedule_times_path(schedule), method: :post, class: "button btn-info btn-block"
