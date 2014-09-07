@@ -1,3 +1,5 @@
+var DEBOUNCE = 500;
+
 function MessageForm() {
     this.$el = $("article.content");
     var $form = this.$form = $('form');
@@ -13,7 +15,7 @@ MessageForm.prototype.init = function () {
     this.textLinker();
     this.textCounter();
 
-    this.bindEvents()
+    this.bindEvents();
 };
 
 
@@ -28,8 +30,8 @@ MessageForm.prototype.bindEvents = function () {
         e.preventDefault();
         var $text = self.$el.text();
 
-        self.$formInput.val($text)
-        self.$form.submit()
+        self.$formInput.val($text);
+        self.$form.submit();
     });
 };
 
@@ -38,7 +40,7 @@ MessageForm.prototype.textLinker = function () {
     this.$el.html(autoLinked);
 };
 
-MessageForm.prototype.throttledTextLinker = _.debounce(MessageForm.prototype.textLinker, 10000);
+MessageForm.prototype.throttledTextLinker = _.debounce(MessageForm.prototype.textLinker, DEBOUNCE);
 
 MessageForm.prototype.textCounter = function () {
     var length = twttr.txt.getTweetLength(this.$el.text());
@@ -56,5 +58,5 @@ MessageForm.prototype.textCounter = function () {
     }
 };
 
-MessageForm.prototype.throttledTextCounter = _.debounce(MessageForm.prototype.textCounter, 100);
+MessageForm.prototype.throttledTextCounter = _.debounce(MessageForm.prototype.textCounter, DEBOUNCE);
 
