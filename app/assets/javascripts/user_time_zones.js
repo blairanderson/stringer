@@ -4,18 +4,19 @@
 
 var UserTimeZonesController = Paloma.controller('UserTimeZones');
 
+function timeZoner() {
+  var tzid = Intl.DateTimeFormat().resolved.timeZone,
+    cutzDiv = $("#current-user-time-zone"),
+    cutz = cutzDiv.data('time-zone');
+
+  if (tzid && cutz && tzid != cutz) {
+    debugger
+    cutzDiv.html("Can we update your timezone to: " + tzid + "?");
+    cutzDiv.append($("<a>", {text: "YES!", "class": "button primary"}));
+  }
+}
+
 UserTimeZonesController.prototype.edit = function () {
-    $(".chosen-select").chosen();
-
-    var tzid = Intl.DateTimeFormat().resolved.timeZone,
-        cutzDiv = $("#current-user-time-zone"),
-        cutz = cutzDiv.data('time-zone');
-
-    if (tzid && cutz && tzid != cutz ) {
-        debugger
-        cutzDiv.html("Can we update your timezone to: " + tzid + "?");
-        var $button = $("<a>", {text: "YES!", "class": "button primary"})
-        cutzDiv.append($button)
-    }
-
+  $(".chosen-select").chosen();
+//  timeZoner();
 };
