@@ -126,7 +126,7 @@ en:
     new: "Add Tweet Time"
   schedule:
     time:
-      delete: "Remove Time"
+      delete: "✖ - Remove"
   user:
     time_zone: "Current TimeZone: %{time_zone}"
   message:
