@@ -1,15 +1,16 @@
 class Schedule < ActiveRecord::Base
   belongs_to :user
   has_many :schedule_times, -> { order(time: :asc) }, dependent: :destroy
+  alias_method :times, :schedule_times
 
   DAYS = [
+      :sunday,
       :monday,
       :tuesday,
       :wednesday,
       :thursday,
       :friday,
-      :saturday,
-      :sunday
+      :saturday
   ].freeze
 
   DAYS.each do |day|
