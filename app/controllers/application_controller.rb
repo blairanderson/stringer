@@ -8,16 +8,17 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-  around_filter :set_time_zone
+  # around_filter :set_time_zone
 
-  def set_time_zone
-    if current_user
-      Time.use_zone(current_user.time_zone) { yield }
-    else
-      yield
-    end
-  end
+  # def set_time_zone
+  #   if current_user
+  #     Time.use_zone(current_user.time_zone) { yield }
+  #   else
+  #     yield
+  #   end
+  # end
 
+  # TODO: create a before_action fo this method to confirm a user has confirmed their email address.
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
