@@ -1,17 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :finish_signup, :destroy]
 
   def show
-    # authorize! :read, @user
   end
 
   def edit
-    # authorize! :update, @user
   end
 
-  # PATCH/PUT /users/:id.:format
   def update
-    # authorize! :update, @user
     respond_to do |format|
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
@@ -24,10 +20,9 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET/PATCH /users/:id/finish_signup
+  # TODO this will be used when we start dealing with email!
   def finish_signup
-    # authorize! :update, @user 
-    if request.patch? && params[:user] #&& params[:user][:email]
+    if request.patch? && params[:user] && params[:user][:email]
       if @user.update(user_params)
         @user.skip_reconfirmation!
         sign_in(@user, :bypass => true)
@@ -38,13 +33,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/:id.:format
   def destroy
-    # authorize! :delete, @user
     @user.destroy
     respond_to do |format|
       format.html { redirect_to root_url }
-      format.json { head :no_content }
+      format.json { render json: @user }
     end
   end
 
