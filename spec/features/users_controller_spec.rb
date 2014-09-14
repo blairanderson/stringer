@@ -18,18 +18,4 @@ describe "WelcomeController" do
       expect(page).to have_content t('devise.registrations.signed_up')
     end
   end
-
-  describe "when a registered user visits" do
-    before do
-      login_user
-    end
-
-    it "should redirect any requests to stories" do
-      visit root_path
-      expect(current_path).to eq stories_path
-
-      visit new_user_registration_path
-      expect(current_path).to eq stories_path
-    end
-  end
 end
