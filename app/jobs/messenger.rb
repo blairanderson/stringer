@@ -10,10 +10,8 @@ class Messenger
 
   def perform
     service = @user.services.where(name: @service).first
-
     if service
       service.client.update(message)
     end
-
   end
 end

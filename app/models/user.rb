@@ -18,8 +18,18 @@ class User < ActiveRecord::Base
   has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy
   has_many :schedules
 
+  has_many :identities
+
   validates :time_zone, inclusion: {in: ActiveSupport::TimeZone.all.map(&:name)}
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
+
+  def email_verified?
+    self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def grouped_stories
+    stories.group_by { |g| g.published.to_s(:pretty_day_and_month) }
+  end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
@@ -59,14 +69,4 @@ class User < ActiveRecord::Base
     end
     user
   end
-
-  def email_verified?
-    self.email && self.email !~ TEMP_EMAIL_REGEX
-  end
-
-  def grouped_stories
-    stories.group_by { |g| g.published.to_s(:pretty_day_and_month) }
-  end
-
-
 end
