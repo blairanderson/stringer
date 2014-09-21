@@ -1,11 +1,5 @@
 .button {
   @extend .btn;
-  &.default {
-    @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
-  }
-  &.primary {
-    @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
-  }
 
   &.nolink {
     color: $gray;
@@ -34,6 +28,21 @@
   }
 }
 
+.button.default {
+  @include button-variant($btn-default-color, $btn-default-bg, $btn-default-border);
+}
+
+.button.primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+
+.button.twitter {
+  @include button-variant(white, $twitter, lighten($twitter, 5%));
+}
+
+.button.facebook {
+  @include button-variant(white, $facebook, lighten($facebook, 5%));
+}
 
 .danger {
   button.nolink {
