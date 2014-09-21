@@ -6,8 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-b = User.create(email: "blair81@gmail.com", password: "password")
-e = User.create(email: "evan@example.com", password: "password")
+b = User.where(email: "blair81@gmail.com").first_or_initialize
+e = User.where(email: "evan@example.com").first_or_initialize
+
+[b, e].each do |user|
+  unless user.persisted?
+    user.password = "password"
+  end
+  user.save
+end
 
 quickleft = Feed.add(url: "http://quickleft.com/blog.rss")
 pando = Feed.add(url: "http://pando.com/feed")
