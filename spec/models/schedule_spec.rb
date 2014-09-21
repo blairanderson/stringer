@@ -13,6 +13,18 @@ describe Schedule do
     it { should have_many :schedule_times }
   end
 
+  describe ".today" do
+    it 'returns all schedules that are active today' do
+      # This stubs today and returns a FRIDAY
+      Date.stub(:today).and_return(Date.new(2011, 11, 11))
+
+      schedule = create(:schedule, friday: :inactive)
+      expect(Schedule.today.first).to be_nil
+
+      schedule.update(friday: :active)
+      expect(Schedule.today.first).to eq(schedule)
+    end
+  end
   describe "days" do
     it "should require days to be enums"
   end
