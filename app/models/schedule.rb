@@ -3,6 +3,8 @@ class Schedule < ActiveRecord::Base
   has_many :schedule_times, -> { order(time: :asc) }, dependent: :destroy
   alias_method :times, :schedule_times
 
+  scope :today, -> { where("#{Schedule::DAYS[Date.today.wday].to_s}_cd" => 0) }
+
   DAYS = [
       :sunday,
       :monday,
