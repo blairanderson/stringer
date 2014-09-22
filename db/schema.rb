@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140921030006) do
+ActiveRecord::Schema.define(version: 20140921215420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(version: 20140921030006) do
   end
 
   add_index "schedule_times", ["schedule_id"], name: "index_schedule_times_on_schedule_id", using: :btree
+
+  create_table "schedule_trackers", force: true do |t|
+    t.integer  "hour",                     null: false
+    t.integer  "minute",                   null: false
+    t.integer  "attempts",     default: 0, null: false
+    t.datetime "completed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "schedule_trackers", ["hour"], name: "index_schedule_trackers_on_hour", using: :btree
+  add_index "schedule_trackers", ["minute"], name: "index_schedule_trackers_on_minute", using: :btree
 
   create_table "schedules", force: true do |t|
     t.integer  "user_id"
