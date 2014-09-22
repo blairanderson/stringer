@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resource :user_time_zone, only: [:edit, :update], path: "user-time-zone"
 
+  match '/delayed_job' => DelayedJobWeb, :anchor => false, via: [:get, :post]
 end
