@@ -5,6 +5,14 @@ class Schedule < ActiveRecord::Base
 
   scope :today, -> { where("#{Schedule::DAYS[Date.today.wday].to_s}_cd" => 0) }
 
+  def today
+    DAYS[Date.today.wday]
+  end
+
+  def active_today?
+    send(today) == :active
+  end
+
   DAYS = [
       :sunday,
       :monday,
