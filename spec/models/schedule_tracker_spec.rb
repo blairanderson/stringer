@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe ScheduleTracker do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it { should validate_presence_of :hour }
+    it { should validate_presence_of :minute }
+  end
 end

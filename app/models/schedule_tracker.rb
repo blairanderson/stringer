@@ -1,4 +1,5 @@
 class ScheduleTracker < ActiveRecord::Base
+  validates_presence_of :hour, :minute
   validates_uniqueness_of :hour, scope: :minute
   after_create :log_me!
   def log_me!
@@ -18,5 +19,10 @@ class ScheduleTracker < ActiveRecord::Base
     end
 
     self.where.not(completed_at: beginning_of_day..end_of_day).update_all(completed_at: nil)
+  end
+
+  def completed_today?
+    now = Time.now
+    completed_at.between?(now.beginning_of_day, now.end_of_day)
   end
 end
