@@ -23,6 +23,18 @@ After setting up, you can run the application using [foreman](http://ddollar.git
     $ foreman start
     
 
+## Developement
+
+__resetting heroku db__
+
+```bash
+
+  $ heroku pg:reset HEROKU_POSTGRESQL_COLOR_URL --account personal --app tweed-stage
+  $ heroku run rake db:migrate --account personal --app tweed-stage
+
+```
+
+
 ## Guidelines
 
 Use the following guides for getting things done, programming well, and
