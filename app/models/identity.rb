@@ -28,6 +28,18 @@ class Identity < ActiveRecord::Base
     end
   end
 
+  def update(message)
+    if twitter?
+      client = TwitterService.new(self)
+    end
+
+    if facebook?
+      client = FacebookService.new(self)
+    end
+
+    client.update(message)
+  end
+
   def facebook?
     provider == "facebook"
   end

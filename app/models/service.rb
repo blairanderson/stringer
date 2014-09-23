@@ -1,5 +1,5 @@
 class Service
   LIST = [
-    "Twitter"
+    "twitter"
   ].freeze
 end

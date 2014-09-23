@@ -1,12 +1,27 @@
-class MessageBuilder < Struct.new(:user_id)
+class MessageBuilder
+  def initialize(user)
+    @user = user
+    raise("BOOM") unless @user
+  end
+
   def perform
-    user = User.find(user_id)
-    message = user.messages.first
+    # Grab the most recent message, delete it from th
+    message = @user.messages.first
 
     if message
+      message_details = message.delete.attributes
       Service::LIST.each do |service|
-        Messenger.new({user: user, service: service, message: message})
+        message = Messenger.new({
+                                    user_id: user.id,
+                                    service: service,
+                                    message: message_details
+                                })
+        Delayed::Job.enqueue(message)
       end
     end
   end
 end
+
+
+
+
