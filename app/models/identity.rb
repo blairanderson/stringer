@@ -28,16 +28,15 @@ class Identity < ActiveRecord::Base
     end
   end
 
-  def update(message)
-    if twitter?
-      client = TwitterService.new(self)
-    end
+  def compose_message(message)
+    client = TwitterService.new(self) if twitter?
+    client = FacebookService.new(self) if facebook?
 
-    if facebook?
-      client = FacebookService.new(self)
+    begin
+      client.update(message)
+    rescue e
+      puts "Error: [#{e}]"
     end
-
-    client.update(message)
   end
 
   def facebook?

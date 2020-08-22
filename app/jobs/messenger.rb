@@ -12,9 +12,9 @@ class Messenger
     user = User.find(@user_id)
     identity = user.identities.where(provider: @service).first
     if identity
-      identity.update(@message)
+      identity.compose_message(@message)
     else
-      puts "user: [#{@user_id}] mising identity for service: [#{@service}] Does not exist!"
+      raise "user: [#{@user_id}] missing identity for service: [#{@service}] Does not exist!"
     end
   end
 end

@@ -25,3 +25,22 @@ namespace :scheduler do
     end
   end
 end
+
+
+namespace :db do
+  namespace :seed do
+    namespace :users do
+      desc "seed the users"
+      task :default => :environment do
+        db_seed_users
+      end
+    end
+  end
+end
+
+
+def db_seed_users
+  10.times {
+    puts "seeding a user"
+  }
+end

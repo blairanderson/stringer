@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby "2.3.0"
 
 gem 'airbrake'
 gem 'bloggy', git: 'https://github.com/blairanderson/bloggy.git'

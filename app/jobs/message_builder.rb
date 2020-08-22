@@ -11,12 +11,11 @@ class MessageBuilder
     if message
       message_details = message.delete.attributes
       Service::LIST.each do |service|
-        message = Messenger.new({
-                                    user_id: user.id,
-                                    service: service,
-                                    message: message_details
-                                })
-        Delayed::Job.enqueue(message)
+        Delayed::Job.enqueue Messenger.new({
+                                               user_id: user.id,
+                                               service: service,
+                                               message: message_details
+                                           })
       end
     end
   end

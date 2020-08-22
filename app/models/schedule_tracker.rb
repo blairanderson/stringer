@@ -6,6 +6,7 @@ class ScheduleTracker < ActiveRecord::Base
     message = "This should only be created one time. We should never see this! running at: [#{self.inspect}]"
     puts message
     # TODO LOG AND EMAIL SOMEONE
+    message
   end
 
   def self.run_scheduler(day = Time.now)
